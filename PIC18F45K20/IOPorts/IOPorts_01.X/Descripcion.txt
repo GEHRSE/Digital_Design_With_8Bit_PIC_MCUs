@@ -1,0 +1,42 @@
+/*******************************************************************************
+ * FileName:        main.c
+ * ProjectName:     IOPorts_01
+ * Dependencies:    See INCLUDES section below
+ * Processor:       PIC18F45K20
+ * Compiler:        XC8
+ * Version:         1.45
+ * Author:          Sebastián Fernando Puente Reyes
+ * e-mail:          sebastian.puente@unillanos.edu.co
+ * Date:            Marzo de 2018
+ *******************************************************************************
+
+A.	TEMA.
+	
+	Input/Output Ports
+	MCU: PIC18F45K20
+
+B.	REQUERIMIENTO
+
+	1.	Encender un LED conectado en la línea RB0.
+
+C.	DESARROLLO
+
+	1.  Hardware:
+		Se conecta un LED en la línea RB0.
+		Se maneja un pulsador para el reset externo.
+		Ver archivo "IOPorts_01.pdf"
+
+	2.  Software:
+		Oscillador interno a 16 MHz (IRCF = 0b111).
+		Se configura la línea RB0 como salida digital.
+		Un estado alto (1) es enviado continuamente por la línea RB0 para encender el LED.
+
+/*******************************************************************************
+ * DISEÑO DIGITAL CON MICROCONTROLADORES PIC DE 8 BITS
+ * Sebastián Puente Reyes, M.Sc.
+ * Grupo de Estudio en Hardware Reconfigurable y Sistemas Embebidos - GEHRSE
+ * Escuela de Ingeniería
+ * Facultad de Ciencías Básicas e Ingeniería
+ * Universidad de los Llanos
+ * Villavicencio - Meta, Colombia
+ ******************************************************************************/
