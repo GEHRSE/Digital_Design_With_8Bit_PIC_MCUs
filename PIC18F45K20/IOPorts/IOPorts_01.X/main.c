@@ -38,16 +38,16 @@
 void main(void)
 {
     //Config. frecuencia oscilador interno
-    OSCCONbits.IRCF = 0b111;    //Oscilador interno a 16 MHz, Fosc = 16Mhz
+    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16Mhz
 
     //Config. puertos I/O
-    LATD = 0;			//Iniciar PORTD
-    TRISDbits.RD0 = 0;	//RD0 como salida digital
+    LATD = 0; //Iniciar PORTD
+    TRISDbits.RD0 = 0; //RD0 como salida digital
 
     while(1)
     {
         //Encender LED conectado en RD0
-        PORTDbits.RD0 = 1;  //Nivel alto por RD0
+        PORTDbits.RD0 = 1; //Nivel alto por RD0
     }
 }
 
