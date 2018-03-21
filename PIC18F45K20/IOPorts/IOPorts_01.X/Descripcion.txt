@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
  * FileName:        main.c
  * ProjectName:     IOPorts_01
  * Dependencies:    See INCLUDES section below
@@ -30,8 +30,6 @@ C.	DESARROLLO
 		Oscillador interno a 16 MHz (IRCF = 0b111).
 		Se configura la línea RB0 como salida digital.
 		Un estado alto (1) es enviado continuamente por la línea RB0 para encender el LED.
-
-D. 	Línea de prueba escrita por FuzzyEngineering.
 
 /*******************************************************************************
  * DISEÑO DIGITAL CON MICROCONTROLADORES PIC DE 8 BITS
