@@ -1,31 +1,35 @@
 /*******************************************************************************
  * FileName:        main.c
- * ProjectName:     IOPorts_04 
+ * ProjectName:     LCD_Keyboard_01
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
  * Compiler:        XC8
  * Version:         1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
- * Date:            Marzo de 2017
+ * Date:            Marzo de 2018
  *******************************************************************************
  * REQUERIMIENTO
- * Oscilador: Fosc = 32 MHz (Interno a 8 MHz x 4PLL)
- * Realizar un contador binario de 8 bits, 0 - 255, que se visualize a través
- * de las 8 líneas del Puerto A. El incremento debe ser cada 300 mseg.
- * -Ver Descripción.txt
+ * Oscilador: Interno a 16 MHz, Fosc = 16 MHz.
+ * Usando la libreria ldc.h imprimir la siguiente información alfanumerica:
+ * 1. Un caracter
+ * 2. String de caracteres
+ * 3. Dato (int) y (float) usando la función sprintf de la libreria stdio.h
  ******************************************************************************/
-
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
 #include <xc.h>
 #include "ConfigurationBits.h"
+#include <stdint.h>
+#include <stdio.h> //Libreria para sprintf
+#include "lcd.h" //Libreria para el manejo de la LCD
+#include "KeyPad.h" //Libreria para el manejo del Teclado Matricial
 
 /*******************************************************************************
  * Macros
  ******************************************************************************/
-#define _XTAL_FREQ 32000000 //Macro necesario para __delay_ms()
+#define _XTAL_FREQ 16000000
 
 /*******************************************************************************
  * Prototipos de funciones
@@ -35,45 +39,46 @@ void SetUp(void);
 /*******************************************************************************
  * Variables globales
  ******************************************************************************/
-unsigned char Contador = 0;
+char Mensaje1[] = "DIGITE LA CLAVE:";
+char Mensaje2[] = "Clave Digitada:";
+char Clave[4] = {'0','0','0','0'};
+uint8_t i;
 
 /*******************************************************************************
  * Función Principal
  ******************************************************************************/
 void main(void)
 {
-    unsigned char i;
-
-    SetUp(); //Llamado a la función SetUp()
-
-    while(1) //Ciclo infinito
+    SetUp(); //Configuración inicial
+    Lcd_Init(); //Se inicializa la LCD
+    
+    Lcd_Cmd(LCD_CURSOR_OFF); //Apagar cursor
+    Lcd_Out(1,0,Mensaje1); //Mensaje1 inicio línea 1
+    Lcd_Cmd(LCD_SECOND_ROW); //Segunda línea
+    
+    for(i = 0; i <= 3; i++)
     {
-        for( i = 0; i < 256; i++)
-        {
-            Contador = i;
-            PORTA = Contador;
-            __delay_ms(300);
-        }
+        Clave[i] = GetKey(); //Captura tecla
+        __delay_ms(300); //Retardo
+        Lcd_Chr_CP('*'); //Imprimir *
     }
-    return;
+    
+    __delay_ms(800);
+    Lcd_Cmd(LCD_CLEAR); //Borrar LCD
+    Lcd_Out(1,0,Mensaje2); //Mensaje2 inicio línea 1
+    Lcd_Out(2,0,Clave); //Mostrar clave inicio línea 2
+    
+    while(1); //Bucle Infinito
 }
-
 /*******************************************************************************
- * FUNCTION:	SetUp()
+ * FUNCTION:    SetUp()
  * INPUTS:      None
  * OUTPUTS:     None
  * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
  ******************************************************************************/
-void SetUp(void)
+void SetUp()
 {
-    //Frecuencia oscilador interno con PLL habilitada
-    OSCCONbits.IRCF = 0b110; //HFINTOSC = 8 MHz
-    OSCTUNEbits.PLLEN = 1; //PLL habilitada Fosc = 4 x 8MHz = 32MHz 
-    
-    //Configuración puertos digitales
-    LATA = 0; //Iniciar PORTA
-    TRISA = 0x00; //Todas las líneas del PORTA como salidas digitales
-    
+    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16 MHz
     return;
 }
 

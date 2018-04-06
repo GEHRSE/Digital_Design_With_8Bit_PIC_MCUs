@@ -1,21 +1,19 @@
 /*******************************************************************************
  * FileName:        main.c
- * ProjectName:     IOPorts_04 
+ * ProjectName:     Programmed_01
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
  * Compiler:        XC8
  * Version:         1.45
- * Author:          Sebastián Fernando Puente Reyes
+ * Author:          Sebastian Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
- * Date:            Marzo de 2017
+ * Date:            Marzo de 2018
  *******************************************************************************
  * REQUERIMIENTO
- * Oscilador: Fosc = 32 MHz (Interno a 8 MHz x 4PLL)
- * Realizar un contador binario de 8 bits, 0 - 255, que se visualize a través
- * de las 8 líneas del Puerto A. El incremento debe ser cada 300 mseg.
- * -Ver Descripción.txt
+ * Oscilador: Interno a 16 MHz, Fosc = 16 MHz.
+ * Encender un LED conectado en RD0.
+ * -Ver Descripcion.txt
  ******************************************************************************/
-
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
@@ -25,64 +23,40 @@
 /*******************************************************************************
  * Macros
  ******************************************************************************/
-#define _XTAL_FREQ 32000000 //Macro necesario para __delay_ms()
 
 /*******************************************************************************
  * Prototipos de funciones
  ******************************************************************************/
-void SetUp(void);
 
 /*******************************************************************************
  * Variables globales
  ******************************************************************************/
-unsigned char Contador = 0;
 
 /*******************************************************************************
  * Función Principal
  ******************************************************************************/
 void main(void)
 {
-    unsigned char i;
+    //Config. frecuencia oscilador interno
+    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16Mhz
 
-    SetUp(); //Llamado a la función SetUp()
+    //Config. puertos I/O
+    LATD = 0; //Iniciar PORTD
+    TRISDbits.RD0 = 0; //RD0 como salida digital
 
-    while(1) //Ciclo infinito
+    while(1)
     {
-        for( i = 0; i < 256; i++)
-        {
-            Contador = i;
-            PORTA = Contador;
-            __delay_ms(300);
-        }
+        //Encender LED conectado en RD0
+        PORTDbits.RD0 = 1; //Nivel alto por RD0
     }
-    return;
-}
-
-/*******************************************************************************
- * FUNCTION:	SetUp()
- * INPUTS:      None
- * OUTPUTS:     None
- * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
- ******************************************************************************/
-void SetUp(void)
-{
-    //Frecuencia oscilador interno con PLL habilitada
-    OSCCONbits.IRCF = 0b110; //HFINTOSC = 8 MHz
-    OSCTUNEbits.PLLEN = 1; //PLL habilitada Fosc = 4 x 8MHz = 32MHz 
-    
-    //Configuración puertos digitales
-    LATA = 0; //Iniciar PORTA
-    TRISA = 0x00; //Todas las líneas del PORTA como salidas digitales
-    
-    return;
 }
 
 /*******************************************************************************
  * DISEÑO DIGITAL CON MICROCONTROLADORES PIC DE 8 BITS
- * Sebastián Puente Reyes, M.Sc.
+ * Sebastian Puente Reyes, M.Sc.
  * Grupo de Estudio en Hardware Reconfigurable y Sistemas Embebidos - GEHRSE
  * Escuela de Ingeniería
- * Facultad de Ciencías Básicas e Ingeniería
+ * Facultad de CiencÃ­as Básicas e Ingeniería
  * Universidad de los Llanos
  * Villavicencio - Meta, Colombia
  ******************************************************************************/
