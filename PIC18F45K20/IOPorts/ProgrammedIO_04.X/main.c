@@ -1,10 +1,11 @@
 /*******************************************************************************
  * FileName:        main.c
  * ProjectName:     ProgrammedIO_04 
+ * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
+ * Topic:           I/O Ports
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8
- * Version:         1.45
+ * Compiler:        XC8, Ver. 1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
  * Date:            Abril de 2018
@@ -19,9 +20,9 @@
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
-#include <xc.h>
-#include "ConfigurationBits.h"
-#include <stdint.h>
+#include <xc.h> //Lib con información del MCU
+#include <stdint.h> //Lib estándar para enteros
+#include "ConfigurationBits.h" //Bits de configuración
 
 /*******************************************************************************
  * Macros
@@ -43,38 +44,49 @@ uint8_t u8_Contador = 0;
  ******************************************************************************/
 void main(void)
 {
-    uint8_t u8_i;
+    uint16_t u16_i;
 
-    SetUp(); //Llamado función SetUp()
+    //--Configutaciones Iniciales
+    SetUp();
 
-    while(1) //Ciclo infinito
+    //--Ciclo Infinito, Tareas que el MCU hace indefinidamente
+    while(1)
     {
-        for(u8_i = 0; u8_i < 256; u8_i++)
+        for(u16_i = 0; u16_i < 256; u16_i++)
         {
-            u8_Contador = u8_i;
+            u8_Contador = (uint8_t)u16_i;
             //Llevar los 8 bits de u8_Contador a las 8 líneas del PORTA
             PORTA = u8_Contador; 
             __delay_ms(300);
         }
     }
+    
     return;
 }
 
 /*******************************************************************************
- * FUNCTION:	SetUp()
- * INPUTS:      None
- * OUTPUTS:     None
- * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
+ * FUNCIÓN:     SetUp()
+ * ENTRADAS:    Ninguna
+ * SALIDAS:     Ninguna
+ * DESCRIPCIÓN: Configuración inicial (oscilador, puertos, etc.)
  ******************************************************************************/
 void SetUp(void)
 {
-    //Configuración frecuencia oscilador interno
-    OSCCONbits.IRCF = 0b110; //HFINTOSC = 8 MHz
-    OSCTUNEbits.PLLEN = 1; //PLL habilitada, Fosc = 4 x 8MHz = 32MHz 
-    
-    //Configuración puertos digitales
+    //---A---Configuración Oscilador (Capitulo 2 DataSheet: Oscillator Module)
+
+    //--A.1--Configuración oscilador interno
+    OSCCONbits.IRCF = 0b110; //HFINTOSC = 8 MHz, Fosc = 8 MHz
+
+    //--A.2--Habilitación PLL
+    OSCTUNEbits.PLLEN = 1; //Fosc = 4 x 8 MHz = 32 MHz
+
+    //---B---Configuración I/O Ports (Capitulo 10 DataSheet: I/O Ports)
+
+    //--B.1--Inicialización I/O Ports
     LATA = 0; //Inicializar PORTA
-    TRISA = 0x00; //Todas las líneas del PORTA como salidas digitales
+
+    //--B.2--Sentido I/O Ports
+    TRISA = 0x00; //Todas las líneas del PORTA como salidas
     
     return;
 }

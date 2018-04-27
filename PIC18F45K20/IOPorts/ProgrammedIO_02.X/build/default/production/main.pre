@@ -4128,13 +4128,15 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 35 "main.c"
+# 37 "main.c"
 void SetUp(void);
 
-# 44
+# 46
 void main(void)
 {
+
 SetUp();
+
 
 while(1)
 {
@@ -4144,25 +4146,33 @@ PORTAbits.RA1 = PORTAbits.RA0;
 
 
 }
+
 return;
 }
 
-# 65
+# 70
 void SetUp(void)
 {
 
+
+
 OSCCONbits.IRCF = 0b111;
+
+
 OSCTUNEbits.PLLEN = 1;
+
+
 
 
 LATA = 0;
 
-# 79
+# 90
 ANSELbits.ANS0 = 0;
 
 
 TRISAbits.TRISA0 = 1;
 TRISAbits.TRISA1 = 0;
+
 return;
 }
 

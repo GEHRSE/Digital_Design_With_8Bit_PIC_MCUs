@@ -1,10 +1,11 @@
 /*******************************************************************************
  * FileName:        main.c
- * ProjectName:     Programmed_01
+ * ProjectName:     ProgrammedIO_01
+ * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
+ * Topic:           I/O Ports
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8
- * Version:         1.45
+ * Compiler:        XC8, Ver. 1.45
  * Author:          Sebastian Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
  * Date:            Marzo de 2018
@@ -38,13 +39,17 @@
  ******************************************************************************/
 void main(void)
 {
-    //Config. frecuencia oscilador interno
-    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16Mhz
+    //--Configuraciones Iniciales
 
-    //Config. puertos I/O
-    LATD = 0; //Iniciar PORTD
-    TRISDbits.RD0 = 0; //RD0 como salida digital
+    //Configuración Oscilador (Capitulo 2 DataSheet: Oscillator Module)
+    //Configuración oscilador interno
+    OSCCONbits.IRCF = 0b111; //HFINTOSC = 16 MHz, Fosc = 16 MHz
 
+    //Configuración I/O Ports (Capitulo 10 I/O Ports DataSheet)
+    LATD = 0; //Inicializar PORTD, tambien es válido: PORTD = 0;
+    TRISDbits.RD0 = 0; //Línea RD0 como salida
+
+    //Ciclo Infinito, Tareas que el MCU hace indefinidamente
     while(1)
     {
         //Encender LED conectado en RD0

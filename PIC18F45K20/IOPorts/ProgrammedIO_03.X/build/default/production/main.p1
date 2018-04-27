@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"33 main.c
+"35 main.c
 [v _SetUp `(v ~T0 @X0 0 ef ]
 "1330 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k20.h
 [s S52 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -3085,72 +3085,75 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "72
 [p x EBTRB=OFF ]
-[; ;main.c: 33: void SetUp(void);
-"38 main.c
+[; ;main.c: 35: void SetUp(void);
+"40 main.c
 [v _LED `b ~T0 @X0 1 e ]
 [i _LED
 -> 0 `i
 ]
-[; ;main.c: 38: bit LED = 0;
+[; ;main.c: 40: bit LED = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"43
+"45
 [v _main `(v ~T0 @X0 1 ef ]
-"44
+"46
 {
-[; ;main.c: 43: void main(void)
-[; ;main.c: 44: {
+[; ;main.c: 45: void main(void)
+[; ;main.c: 46: {
 [e :U _main ]
 [f ]
-[; ;main.c: 45: SetUp();
-"45
-[e ( _SetUp ..  ]
-[; ;main.c: 47: while(1)
-"47
-[e :U 298 ]
-[; ;main.c: 48: {
+[; ;main.c: 48: SetUp();
 "48
-{
-[; ;main.c: 49: LED = !LED;
-"49
-[e = _LED ! _LED ]
-[; ;main.c: 50: PORTEbits.RE0 = LED;
-"50
-[e = . . _PORTEbits 0 0 -> -> _LED `i `uc ]
-[; ;main.c: 51: _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( _SetUp ..  ]
+[; ;main.c: 51: while(1)
 "51
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e :U 298 ]
+[; ;main.c: 52: {
 "52
+{
+[; ;main.c: 53: LED = !LED;
+"53
+[e = _LED ! _LED ]
+[; ;main.c: 54: PORTEbits.RE0 = LED;
+"54
+[e = . . _PORTEbits 0 0 -> -> _LED `i `uc ]
+[; ;main.c: 55: _delay((unsigned long)((1000)*(16000000/4000.0)));
+"55
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"56
 }
 [e :U 297 ]
-"47
+"51
 [e $U 298  ]
 [e :U 299 ]
-[; ;main.c: 52: }
-[; ;main.c: 53: }
-"53
+[; ;main.c: 56: }
+[; ;main.c: 58: return;
+"58
+[e $UE 296  ]
+[; ;main.c: 59: }
+"59
 [e :UE 296 ]
 }
-"61
+"67
 [v _SetUp `(v ~T0 @X0 1 ef ]
-"62
+"68
 {
-[; ;main.c: 61: void SetUp(void)
-[; ;main.c: 62: {
+[; ;main.c: 67: void SetUp(void)
+[; ;main.c: 68: {
 [e :U _SetUp ]
 [f ]
-[; ;main.c: 64: OSCCONbits.IRCF = 0b111;
-"64
+[; ;main.c: 72: OSCCONbits.IRCF = 0b111;
+"72
 [e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-[; ;main.c: 67: LATE = 0;
-"67
+[; ;main.c: 77: LATE = 0;
+"77
 [e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 68: TRISEbits.TRISE0 = 0;
-"68
+[; ;main.c: 80: TRISEbits.TRISE0 = 0;
+"80
 [e = . . _TRISEbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 70: return;
-"70
+[; ;main.c: 82: return;
+"82
 [e $UE 300  ]
-[; ;main.c: 71: }
-"71
+[; ;main.c: 83: }
+"83
 [e :UE 300 ]
 }

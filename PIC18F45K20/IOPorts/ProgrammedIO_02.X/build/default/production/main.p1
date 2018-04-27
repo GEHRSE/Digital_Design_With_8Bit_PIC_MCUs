@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"35 main.c
+"37 main.c
 [v _SetUp `(v ~T0 @X0 0 ef ]
 "556 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k20.h
 [s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -3094,72 +3094,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "72
 [p x EBTRB=OFF ]
-[; ;main.c: 35: void SetUp(void);
+[; ;main.c: 37: void SetUp(void);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"44 main.c
+"46 main.c
 [v _main `(v ~T0 @X0 1 ef ]
-"45
+"47
 {
-[; ;main.c: 44: void main(void)
-[; ;main.c: 45: {
+[; ;main.c: 46: void main(void)
+[; ;main.c: 47: {
 [e :U _main ]
 [f ]
-[; ;main.c: 46: SetUp();
-"46
-[e ( _SetUp ..  ]
-[; ;main.c: 48: while(1)
-"48
-[e :U 298 ]
-[; ;main.c: 49: {
+[; ;main.c: 49: SetUp();
 "49
+[e ( _SetUp ..  ]
+[; ;main.c: 52: while(1)
+"52
+[e :U 298 ]
+[; ;main.c: 53: {
+"53
 {
-[; ;main.c: 51: PORTAbits.RA1 = PORTAbits.RA0;
-"51
-[e = . . _PORTAbits 0 1 . . _PORTAbits 0 0 ]
+[; ;main.c: 55: PORTAbits.RA1 = PORTAbits.RA0;
 "55
+[e = . . _PORTAbits 0 1 . . _PORTAbits 0 0 ]
+"59
 }
 [e :U 297 ]
-"48
+"52
 [e $U 298  ]
 [e :U 299 ]
-[; ;main.c: 55: }
-[; ;main.c: 56: return;
-"56
+[; ;main.c: 59: }
+[; ;main.c: 61: return;
+"61
 [e $UE 296  ]
-[; ;main.c: 57: }
-"57
+[; ;main.c: 62: }
+"62
 [e :UE 296 ]
 }
-"65
+"70
 [v _SetUp `(v ~T0 @X0 1 ef ]
-"66
+"71
 {
-[; ;main.c: 65: void SetUp(void)
-[; ;main.c: 66: {
+[; ;main.c: 70: void SetUp(void)
+[; ;main.c: 71: {
 [e :U _SetUp ]
 [f ]
-[; ;main.c: 68: OSCCONbits.IRCF = 0b111;
-"68
+[; ;main.c: 75: OSCCONbits.IRCF = 0b111;
+"75
 [e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-[; ;main.c: 69: OSCTUNEbits.PLLEN = 1;
-"69
+[; ;main.c: 78: OSCTUNEbits.PLLEN = 1;
+"78
 [e = . . _OSCTUNEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 72: LATA = 0;
-"72
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 79: ANSELbits.ANS0 = 0;
-"79
-[e = . . _ANSELbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 82: TRISAbits.TRISA0 = 1;
-"82
-[e = . . _TRISAbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 83: TRISAbits.TRISA1 = 0;
+[; ;main.c: 83: LATA = 0;
 "83
+[e = _LATA -> -> 0 `i `uc ]
+[; ;main.c: 90: ANSELbits.ANS0 = 0;
+"90
+[e = . . _ANSELbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 93: TRISAbits.TRISA0 = 1;
+"93
+[e = . . _TRISAbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 94: TRISAbits.TRISA1 = 0;
+"94
 [e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 84: return;
-"84
+[; ;main.c: 96: return;
+"96
 [e $UE 300  ]
-[; ;main.c: 85: }
-"85
+[; ;main.c: 97: }
+"97
 [e :UE 300 ]
 }

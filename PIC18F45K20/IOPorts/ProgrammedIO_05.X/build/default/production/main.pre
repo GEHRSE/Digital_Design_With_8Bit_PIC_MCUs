@@ -4071,6 +4071,96 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
 
 # 19 "ConfigurationBits.h"
 #pragma config FOSC = INTIO67
@@ -4128,16 +4218,18 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 32 "main.c"
+# 36 "main.c"
 void SetUp(void);
 
-# 39
-char Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+# 43
+uint8_t Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 
-# 44
+# 48
 void main(void)
 {
+
 SetUp();
+
 
 while(1)
 {
@@ -4151,23 +4243,34 @@ else
 PORTD = 0x00;
 }
 }
+
+return;
 }
 
-# 68
+# 76
 void SetUp(void)
 {
 
+
+
 OSCCONbits.IRCF = 0b111;
+
+
 OSCTUNEbits.PLLEN = 1;
+
+
 
 
 LATB = 0;
 LATD = 0;
 
+# 97
 ANSELHbits.ANS12 = 0;
 ANSELHbits.ANS10 = 0;
 ANSELHbits.ANS8 = 0;
 ANSELHbits.ANS9 = 0;
+
+
 TRISB = 0xFF;
 TRISD = 0x00;
 

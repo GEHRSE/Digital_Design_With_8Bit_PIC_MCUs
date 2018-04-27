@@ -1,12 +1,11 @@
 __CFG_XINST$OFF 0 0 ABS 0
 __S0 30000E 0 ABS 0
-__S1 5 0 ABS 0
+__S1 6 0 ABS 0
 __S2 0 0 ABS 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
-main@u8_i 3 0 COMRAM 1
 _LATA F89 0 ABS 0
-_main 7FD6 0 CODE 0
+_main 7FCA 0 CODE 0
 ___sp 0 0 STACK 2
 start 0 0 CODE 0
 _TRISA F92 0 ABS 0
@@ -24,7 +23,7 @@ __Lbigram 0 0 ABS 0
 __Hrparam 0 0 COMRAM 1
 __Lrparam 0 0 COMRAM 1
 __Hram 0 0 ABS 0
-_SetUp 7FC2 0 CODE 0
+_SetUp 7FB6 0 CODE 0
 __Lram 0 0 ABS 0
 __Hcomram 0 0 ABS 0
 __Lcomram 0 0 ABS 0
@@ -85,7 +84,7 @@ __end_of_main 8000 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
-end_of_initialization 7FBC 0 CODE 0
+end_of_initialization 7FB0 0 CODE 0
 __size_of_SetUp 0 0 ABS 0
 __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
@@ -109,18 +108,18 @@ __Htext0 0 0 ABS 0
 __Ltext0 0 0 ABS 0
 __Htext1 0 0 ABS 0
 __Ltext1 0 0 ABS 0
-__ptext0 7FD6 0 CODE 0
-__ptext1 7FC2 0 CODE 0
+__ptext0 7FCA 0 CODE 0
+__ptext1 7FB6 0 CODE 0
 __HbssCOMRAM 0 0 ABS 0
 __LbssCOMRAM 0 0 ABS 0
-__pbssCOMRAM 4 0 COMRAM 1
+__pbssCOMRAM 5 0 COMRAM 1
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-_u8_Contador 4 0 COMRAM 1
+_u8_Contador 5 0 COMRAM 1
 __CFG_BORV$18 0 0 ABS 0
 __CFG_HFOFST$ON 0 0 ABS 0
 _OSCTUNEbits F9B 0 ABS 0
-__end_of__initialization 7FBC 0 CODE 0
+__end_of__initialization 7FB0 0 CODE 0
 ___rparam_used 1 0 ABS 0
 __Hidata 0 0 CODE 0
 __Lidata 0 0 CODE 0
@@ -137,7 +136,7 @@ __HcstackCOMRAM 0 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __LcstackCOMRAM 0 0 ABS 0
 __pcstackCOMRAM 1 0 COMRAM 1
-__Hspace_1 5 0 ABS 0
+__Hspace_1 6 0 ABS 0
 __Lspace_1 0 0 ABS 0
 __Hsmallconst 0 0 SMALLCONST 0
 __Lsmallconst 0 0 SMALLCONST 0
@@ -147,7 +146,7 @@ __Hnvbit 0 0 COMRAM 1
 __Lnvbit 0 0 COMRAM 1
 __Hcinit 0 0 ABS 0
 __Lcinit 0 0 ABS 0
-__pcinit 7FBA 0 CODE 0
+__pcinit 7FAE 0 CODE 0
 __CFG_EBTRB$OFF 0 0 ABS 0
 __ramtop 600 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
@@ -160,7 +159,7 @@ __CFG_WRT2$OFF 0 0 ABS 0
 __CFG_PWRT$ON 0 0 ABS 0
 __CFG_WRT3$OFF 0 0 ABS 0
 __CFG_FCMEN$OFF 0 0 ABS 0
-__end_of_SetUp 7FD6 0 CODE 0
+__end_of_SetUp 7FCA 0 CODE 0
 ___inthi_sp 0 0 STACK 2
 __CFG_WDTEN$OFF 0 0 ABS 0
 ___intlo_sp 0 0 STACK 2
@@ -184,45 +183,46 @@ __CFG_WRTC$OFF 0 0 ABS 0
 __CFG_WRTD$OFF 0 0 ABS 0
 __CFG_CPB$OFF 0 0 ABS 0
 __CFG_CPD$OFF 0 0 ABS 0
-start_initialization 7FBA 0 CODE 0
+start_initialization 7FAE 0 CODE 0
 __CFG_BOREN$SBORDIS 0 0 ABS 0
 __CFG_IESO$OFF 0 0 ABS 0
 __CFG_MCLRE$ON 0 0 ABS 0
-__initialization 7FBA 0 CODE 0
+__initialization 7FAE 0 CODE 0
 __CFG_LPT1OSC$OFF 0 0 ABS 0
 __activetblptr 0 0 ABS 0
+main@u16_i 3 0 COMRAM 1
 __CFG_LVP$OFF 0 0 ABS 0
 %segments
 reset_vec 0 3 CODE 0 0
 config 300000 30000D CONFIG 300000 0
 idloc 200000 200007 IDLOC 200000 0
-cstackCOMRAM 1 4 COMRAM 1 1
-text0 7FD6 7FFF CODE 7FD6 0
-text1 7FC2 7FD5 CODE 7FC2 0
-cinit 7FBA 7FC1 CODE 7FBA 0
+cstackCOMRAM 1 5 COMRAM 1 1
+text0 7FCA 7FFF CODE 7FCA 0
+text1 7FB6 7FC9 CODE 7FB6 0
+cinit 7FAE 7FB5 CODE 7FAE 0
 %locals
 dist/default/production\ProgrammedIO_04.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k20.h
-C:\Users\Lenovo\AppData\Local\Temp\scag.
-423 7FBA 0 CODE 0
-425 7FBA 0 CODE 0
-428 7FBA 0 CODE 0
-440 7FBA 0 CODE 0
-446 7FBC 0 CODE 0
-448 7FBC 0 CODE 0
-449 7FBE 0 CODE 0
+C:\Users\Lenovo\AppData\Local\Temp\s85o.
+423 7FAE 0 CODE 0
+425 7FAE 0 CODE 0
+428 7FAE 0 CODE 0
+440 7FAE 0 CODE 0
+446 7FB0 0 CODE 0
+448 7FB0 0 CODE 0
+449 7FB2 0 CODE 0
 main.c
-44 7FD6 0 CODE 0
-48 7FD6 0 CODE 0
-52 7FDA 0 CODE 0
-53 7FDE 0 CODE 0
-54 7FDE 0 CODE 0
-56 7FE2 0 CODE 0
-57 7FE6 0 CODE 0
-52 7FFC 0 CODE 0
+45 7FCA 0 CODE 0
+50 7FCA 0 CODE 0
+53 7FCE 0 CODE 0
+55 7FCE 0 CODE 0
+57 7FDC 0 CODE 0
+59 7FE0 0 CODE 0
+60 7FE4 0 CODE 0
+55 7FFA 0 CODE 0
 main.c
-69 7FC2 0 CODE 0
-72 7FC2 0 CODE 0
-73 7FCA 0 CODE 0
-76 7FCC 0 CODE 0
-77 7FD0 0 CODE 0
+73 7FB6 0 CODE 0
+78 7FB6 0 CODE 0
+81 7FBE 0 CODE 0
+86 7FC0 0 CODE 0
+89 7FC4 0 CODE 0

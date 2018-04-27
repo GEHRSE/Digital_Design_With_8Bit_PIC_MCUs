@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Thu Apr 26 22:35:22 2018
+                                                                                               Fri Apr 27 16:08:13 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -99,7 +99,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     85 ;;
     86 ;; *************** function _main *****************
     87 ;; Defined at:
-    88 ;;		line 43 in file "main.c"
+    88 ;;		line 45 in file "main.c"
     89 ;; Parameters:    Size  Location     Type
     90 ;;		None
     91 ;; Auto vars:     Size  Location     Type
@@ -132,13 +132,13 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    118  007FCC                     _main:
    119                           	opt stack 30
    120                           
-   121                           ;main.c: 45: SetUp();
+   121                           ;main.c: 48: SetUp();
    122                           
    123                           ;incstack = 0
    124  007FCC  ECDF  F03F         	call	_SetUp	;wreg free
    125  007FD0                     
-   126                           ;main.c: 48: {
-   127                           ;main.c: 49: LED = !LED;
+   126                           ;main.c: 52: {
+   127                           ;main.c: 53: LED = !LED;
    128  007FD0  B003               	btfsc	_LED/(0+8),_LED& (0+7),c
    129  007FD2  D002               	goto	u10
    130  007FD4  8003               	bsf	_LED/(0+8),_LED& (0+7),c
@@ -147,7 +147,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    133  007FD8  9003               	bcf	_LED/(0+8),_LED& (0+7),c
    134  007FDA                     u25:
    135                           
-   136                           ;main.c: 50: PORTEbits.RE0 = LED;
+   136                           ;main.c: 54: PORTEbits.RE0 = LED;
    137  007FDA  A003               	btfss	_LED/(0+8),_LED& (0+7),c
    138  007FDC  D002               	bra	u35
    139  007FDE  8084               	bsf	3972,0,c	;volatile
@@ -156,7 +156,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    142  007FE2  9084               	bcf	3972,0,c	;volatile
    143  007FE4                     u37:
    144                           
-   145                           ;main.c: 51: _delay((unsigned long)((1000)*(16000000/4000.0)));
+   145                           ;main.c: 55: _delay((unsigned long)((1000)*(16000000/4000.0)));
    146  007FE4  0E15               	movlw	21
    147  007FE6  6E02               	movwf	(??_main+1)& (0+255),c
    148  007FE8  0E4B               	movlw	75
@@ -177,7 +177,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    163                           
    164 ;; *************** function _SetUp *****************
    165 ;; Defined at:
-   166 ;;		line 61 in file "main.c"
+   166 ;;		line 67 in file "main.c"
    167 ;; Parameters:    Size  Location     Type
    168 ;;		None
    169 ;; Auto vars:     Size  Location     Type
@@ -210,18 +210,18 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    196  007FBE                     _SetUp:
    197                           	opt stack 30
    198                           
-   199                           ;main.c: 64: OSCCONbits.IRCF = 0b111;
+   199                           ;main.c: 72: OSCCONbits.IRCF = 0b111;
    200                           
    201                           ;incstack = 0
    202  007FBE  88D3               	bsf	4051,4,c	;volatile
    203  007FC0  8AD3               	bsf	4051,5,c	;volatile
    204  007FC2  8CD3               	bsf	4051,6,c	;volatile
    205                           
-   206                           ;main.c: 67: LATE = 0;
+   206                           ;main.c: 77: LATE = 0;
    207  007FC4  0E00               	movlw	0
    208  007FC6  6E8D               	movwf	3981,c	;volatile
    209                           
-   210                           ;main.c: 68: TRISEbits.TRISE0 = 0;
+   210                           ;main.c: 80: TRISEbits.TRISE0 = 0;
    211  007FC8  9096               	bcf	3990,0,c	;volatile
    212  007FCA  0012               	return	
    213  007FCC                     __end_of_SetUp:
@@ -330,7 +330,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Thu Apr 26 22:35:22 2018
+Symbol Table                                                                                   Fri Apr 27 16:08:13 2018
 
                      l19 7FD0                       u10 7FD8                       u25 7FDA  
                      u35 7FE2                       u37 7FE4                       u47 7FEE  

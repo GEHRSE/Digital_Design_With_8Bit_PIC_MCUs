@@ -23,7 +23,7 @@
 [v ___flmul __flmul `(d  1 e 3 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"38 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\ProgrammedIO_01.X\main.c
+"40 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\ProgrammedIO_01.X\main.c
 [v _main main `(v  1 e 1 0 ]
 [s S61 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
@@ -84,8 +84,8 @@
 ]
 [u S34 . 1 `S21 1 . 1 0 `S27 1 . 1 0 ]
 [v _OSCCONbits OSCCONbits `VES34  1 e 1 @4051 ]
-"38 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\ProgrammedIO_01.X\main.c
+"40 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\ProgrammedIO_01.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"52
+"58
 } 0

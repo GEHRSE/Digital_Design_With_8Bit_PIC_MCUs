@@ -1,10 +1,11 @@
 /*******************************************************************************
  * FileName:        main.c
  * ProjectName:     ProgrammedIO_03 
+ * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
+ * Topic:           I/O Ports
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8
- * Version:         1.45
+ * Compiler:        XC8, Ver. 1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
  * Date:            Marzo de 2018
@@ -14,13 +15,14 @@
  * Generar una señal cuadrada por la línea RE0 con un periodo (T) de 2 seg y
  * un ciclo de trabajo del 50%. Es decir, la señal se mantiene en estado ALTO
  * por 1 seg(0.5*2) y luego pasa a estado BAJO por 1 seg(0.5*2).
+ * -Ver Descripcion.txt
  ******************************************************************************/
 
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
-#include <xc.h>
-#include "ConfigurationBits.h"
+#include <xc.h> //Lib con información del MCU
+#include "ConfigurationBits.h" //Bits de configuración
 
 /*******************************************************************************
  * Macros
@@ -42,30 +44,40 @@ bit LED = 0; //Variable tipo bit
  ******************************************************************************/
 void main(void)
 {
-    SetUp(); //Llamado a la función SetUp
+    //--Configutaciones Iniciales
+    SetUp();
 
-    while(1) //Bucle infinito
+    //--Ciclo Infinito, Tareas que el MCU hace indefinidamente
+    while(1)
     {
         LED = !LED; //Se complementa la variable LED
         PORTEbits.RE0 = LED; //El valor de la variable LED se muestra por la línea RE0
         __delay_ms(1000);    //Función para temporizaciones en ms, se pide un retardo de 1000 ms = 1seg
     }
+
+    return;
 }
 
 /*******************************************************************************
- * FUNCTION:	SetUp()
- * INPUTS:      None
- * OUTPUTS:     None
- * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
+ * FUNCIÓN:     SetUp()
+ * ENTRADAS:    Ninguna
+ * SALIDAS:     Ninguna
+ * DESCRIPCIÓN: Configuración inicial (oscilador, puertos, etc.)
  ******************************************************************************/
 void SetUp(void)
 {
-    //Configuración frecuencia oscilador interno
-    OSCCONbits.IRCF = 0b111; //Fosc = 16 MHz
-    
-    //Configuración puertos digitales
+    //---A---Configuración Oscilador (Capitulo 2 DataSheet: Oscillator Module)
+
+    //--A.1--Configuración oscilador interno (si es el caso)
+    OSCCONbits.IRCF = 0b111; //HFINTOSC = 16 MHz, Fosc = 16 MHz
+
+    //---B---Configuración I/O Ports (Capitulo 10 DataSheet: I/O Ports)
+
+    //--B.1--Inicialización I/O Ports
     LATE = 0; //Inicializar PORTE
-    TRISEbits.TRISE0 = 0; //Línea RE0 como salida digital
+
+    //--B.2--Sentido I/O Ports
+    TRISEbits.TRISE0 = 0; //Línea RE0 como salida
     
     return;
 }

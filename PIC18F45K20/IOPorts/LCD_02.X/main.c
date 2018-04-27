@@ -82,11 +82,12 @@ void main(void)
  ******************************************************************************/
 void SetUp(void)
 {
-    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16 MHz
+	//Configuración frecuencia oscilador interno
+    OSCCONbits.IRCF = 0b111; //Fosc = 16 MHz
 
-    //Config I/O ports
-    ANSELHbits.ANS12 = 0; //Buffer de entrada digital de RB0 habilitado
-    ANSELHbits.ANS10 = 0; //Buffer de entrada digital de RB1 habilitado
+    //Configuración I/O ports
+    ANSELHbits.ANS12 = 0; //Habilitación buffer entrada digital de RB0
+    ANSELHbits.ANS10 = 0; //Habilitación buffer entrada digital de RB1
     LATB = 0;
     IZQ_dir = 1;
     DER_dir = 1;

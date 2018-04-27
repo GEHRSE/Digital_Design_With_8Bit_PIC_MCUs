@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"32 main.c
+"36 main.c
 [v _SetUp `(v ~T0 @X0 0 ef ]
 "786 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k20.h
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
@@ -2993,6 +2993,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 "19 ConfigurationBits.h
 [p x FOSC=INTIO67 ]
 "20
@@ -3061,8 +3089,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "72
 [p x EBTRB=OFF ]
-[; ;main.c: 32: void SetUp(void);
-"39 main.c
+[; ;main.c: 36: void SetUp(void);
+"43 main.c
 [v _Disp7SegCC `uc ~T0 @X0 -> 0 `x e ]
 [i _Disp7SegCC
 :U ..
@@ -3078,104 +3106,107 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 111 `i `uc
 ..
 ]
-[; ;main.c: 39: char Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+[; ;main.c: 43: uint8_t Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 [v $root$_main `(v ~T0 @X0 0 e ]
-"44
-[v _main `(v ~T0 @X0 1 ef ]
-"45
-{
-[; ;main.c: 44: void main(void)
-[; ;main.c: 45: {
-[e :U _main ]
-[f ]
-[; ;main.c: 46: SetUp();
-"46
-[e ( _SetUp ..  ]
-[; ;main.c: 48: while(1)
 "48
-[e :U 298 ]
-[; ;main.c: 49: {
+[v _main `(v ~T0 @X0 1 ef ]
 "49
 {
-[; ;main.c: 51: if(PORTB < 10)
+[; ;main.c: 48: void main(void)
+[; ;main.c: 49: {
+[e :U _main ]
+[f ]
+[; ;main.c: 51: SetUp();
 "51
-[e $ ! < -> _PORTB `i -> 10 `i 300  ]
-[; ;main.c: 52: {
-"52
-{
-[; ;main.c: 53: PORTD = Disp7SegCC[PORTB];
-"53
-[e = _PORTD *U + &U _Disp7SegCC * -> _PORTB `ux -> -> # *U &U _Disp7SegCC `ui `ux ]
+[e ( _SetUp ..  ]
+[; ;main.c: 54: while(1)
 "54
-}
-[; ;main.c: 54: }
-[e $U 301  ]
+[e :U 298 ]
+[; ;main.c: 55: {
 "55
-[e :U 300 ]
-[; ;main.c: 55: else
-[; ;main.c: 56: {
-"56
 {
-[; ;main.c: 57: PORTD = 0x00;
+[; ;main.c: 57: if(PORTB < 10)
 "57
-[e = _PORTD -> -> 0 `i `uc ]
+[e $ ! < -> _PORTB `i -> 10 `i 300  ]
+[; ;main.c: 58: {
 "58
+{
+[; ;main.c: 59: PORTD = Disp7SegCC[PORTB];
+"59
+[e = _PORTD *U + &U _Disp7SegCC * -> _PORTB `ux -> -> # *U &U _Disp7SegCC `ui `ux ]
+"60
+}
+[; ;main.c: 60: }
+[e $U 301  ]
+"61
+[e :U 300 ]
+[; ;main.c: 61: else
+[; ;main.c: 62: {
+"62
+{
+[; ;main.c: 63: PORTD = 0x00;
+"63
+[e = _PORTD -> -> 0 `i `uc ]
+"64
 }
 [e :U 301 ]
-"59
+"65
 }
 [e :U 297 ]
-"48
+"54
 [e $U 298  ]
 [e :U 299 ]
-[; ;main.c: 58: }
-[; ;main.c: 59: }
-[; ;main.c: 60: }
-"60
+[; ;main.c: 64: }
+[; ;main.c: 65: }
+[; ;main.c: 67: return;
+"67
+[e $UE 296  ]
+[; ;main.c: 68: }
+"68
 [e :UE 296 ]
 }
-"68
+"76
 [v _SetUp `(v ~T0 @X0 1 ef ]
-"69
+"77
 {
-[; ;main.c: 68: void SetUp(void)
-[; ;main.c: 69: {
+[; ;main.c: 76: void SetUp(void)
+[; ;main.c: 77: {
 [e :U _SetUp ]
 [f ]
-[; ;main.c: 71: OSCCONbits.IRCF = 0b111;
-"71
-[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-[; ;main.c: 72: OSCTUNEbits.PLLEN = 1;
-"72
-[e = . . _OSCTUNEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 75: LATB = 0;
-"75
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 76: LATD = 0;
-"76
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 78: ANSELHbits.ANS12 = 0;
-"78
-[e = . . _ANSELHbits 0 4 -> -> 0 `i `uc ]
-[; ;main.c: 79: ANSELHbits.ANS10 = 0;
-"79
-[e = . . _ANSELHbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 80: ANSELHbits.ANS8 = 0;
-"80
-[e = . . _ANSELHbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 81: ANSELHbits.ANS9 = 0;
+[; ;main.c: 81: OSCCONbits.IRCF = 0b111;
 "81
+[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
+[; ;main.c: 84: OSCTUNEbits.PLLEN = 1;
+"84
+[e = . . _OSCTUNEbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 89: LATB = 0;
+"89
+[e = _LATB -> -> 0 `i `uc ]
+[; ;main.c: 90: LATD = 0;
+"90
+[e = _LATD -> -> 0 `i `uc ]
+[; ;main.c: 97: ANSELHbits.ANS12 = 0;
+"97
+[e = . . _ANSELHbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 98: ANSELHbits.ANS10 = 0;
+"98
+[e = . . _ANSELHbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 99: ANSELHbits.ANS8 = 0;
+"99
+[e = . . _ANSELHbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 100: ANSELHbits.ANS9 = 0;
+"100
 [e = . . _ANSELHbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 82: TRISB = 0xFF;
-"82
+[; ;main.c: 103: TRISB = 0xFF;
+"103
 [e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 83: TRISD = 0x00;
-"83
+[; ;main.c: 104: TRISD = 0x00;
+"104
 [e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 85: return;
-"85
+[; ;main.c: 106: return;
+"106
 [e $UE 302  ]
-[; ;main.c: 86: }
-"86
+[; ;main.c: 107: }
+"107
 [e :UE 302 ]
 }

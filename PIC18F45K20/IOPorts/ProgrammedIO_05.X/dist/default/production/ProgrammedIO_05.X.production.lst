@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Thu Mar 22 16:18:57 2018
+                                                                                               Fri Apr 27 16:20:00 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -156,7 +156,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    142 ;;
    143 ;; *************** function _main *****************
    144 ;; Defined at:
-   145 ;;		line 44 in file "main.c"
+   145 ;;		line 48 in file "main.c"
    146 ;; Parameters:    Size  Location     Type
    147 ;;		None
    148 ;; Auto vars:     Size  Location     Type
@@ -189,19 +189,19 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    175  007FB6                     _main:
    176                           	opt stack 30
    177                           
-   178                           ;main.c: 46: SetUp();
+   178                           ;main.c: 51: SetUp();
    179                           
    180                           ;incstack = 0
    181  007FB6  ECCB  F03F         	call	_SetUp	;wreg free
    182  007FBA                     
-   183                           ;main.c: 49: {
-   184                           ;main.c: 51: if(PORTB < 10)
+   183                           ;main.c: 55: {
+   184                           ;main.c: 57: if(PORTB < 10)
    185  007FBA  0E0A               	movlw	10
    186  007FBC  6081               	cpfslt	3969,c	;volatile
    187  007FBE  D00A               	goto	l28
    188                           
-   189                           ;main.c: 52: {
-   190                           ;main.c: 53: PORTD = Disp7SegCC[PORTB];
+   189                           ;main.c: 58: {
+   190                           ;main.c: 59: PORTD = Disp7SegCC[PORTB];
    191  007FC0  5081               	movf	3969,w,c	;volatile
    192  007FC2  0D01               	mullw	1
    193  007FC4  0E01               	movlw	low _Disp7SegCC
@@ -214,9 +214,9 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    200  007FD2  D001               	goto	L1
    201  007FD4                     l28:
    202                           
-   203                           ;main.c: 55: else
-   204                           ;main.c: 56: {
-   205                           ;main.c: 57: PORTD = 0x00;
+   203                           ;main.c: 61: else
+   204                           ;main.c: 62: {
+   205                           ;main.c: 63: PORTD = 0x00;
    206  007FD4  0E00               	movlw	0
    207  007FD6                     L1:
    208  007FD6  6E83               	movwf	3971,c	;volatile
@@ -238,7 +238,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    224                           
    225 ;; *************** function _SetUp *****************
    226 ;; Defined at:
-   227 ;;		line 68 in file "main.c"
+   227 ;;		line 76 in file "main.c"
    228 ;; Parameters:    Size  Location     Type
    229 ;;		None
    230 ;; Auto vars:     Size  Location     Type
@@ -271,40 +271,40 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    257  007F96                     _SetUp:
    258                           	opt stack 30
    259                           
-   260                           ;main.c: 71: OSCCONbits.IRCF = 0b111;
+   260                           ;main.c: 81: OSCCONbits.IRCF = 0b111;
    261                           
    262                           ;incstack = 0
    263  007F96  88D3               	bsf	4051,4,c	;volatile
    264  007F98  8AD3               	bsf	4051,5,c	;volatile
    265  007F9A  8CD3               	bsf	4051,6,c	;volatile
    266                           
-   267                           ;main.c: 72: OSCTUNEbits.PLLEN = 1;
+   267                           ;main.c: 84: OSCTUNEbits.PLLEN = 1;
    268  007F9C  8C9B               	bsf	3995,6,c	;volatile
    269                           
-   270                           ;main.c: 75: LATB = 0;
+   270                           ;main.c: 89: LATB = 0;
    271  007F9E  0E00               	movlw	0
    272  007FA0  6E8A               	movwf	3978,c	;volatile
    273                           
-   274                           ;main.c: 76: LATD = 0;
+   274                           ;main.c: 90: LATD = 0;
    275  007FA2  0E00               	movlw	0
    276  007FA4  6E8C               	movwf	3980,c	;volatile
    277                           
-   278                           ;main.c: 78: ANSELHbits.ANS12 = 0;
+   278                           ;main.c: 97: ANSELHbits.ANS12 = 0;
    279  007FA6  987F               	bcf	3967,4,c	;volatile
    280                           
-   281                           ;main.c: 79: ANSELHbits.ANS10 = 0;
+   281                           ;main.c: 98: ANSELHbits.ANS10 = 0;
    282  007FA8  947F               	bcf	3967,2,c	;volatile
    283                           
-   284                           ;main.c: 80: ANSELHbits.ANS8 = 0;
+   284                           ;main.c: 99: ANSELHbits.ANS8 = 0;
    285  007FAA  907F               	bcf	3967,0,c	;volatile
    286                           
-   287                           ;main.c: 81: ANSELHbits.ANS9 = 0;
+   287                           ;main.c: 100: ANSELHbits.ANS9 = 0;
    288  007FAC  927F               	bcf	3967,1,c	;volatile
    289                           
-   290                           ;main.c: 82: TRISB = 0xFF;
+   290                           ;main.c: 103: TRISB = 0xFF;
    291  007FAE  6893               	setf	3987,c	;volatile
    292                           
-   293                           ;main.c: 83: TRISD = 0x00;
+   293                           ;main.c: 104: TRISD = 0x00;
    294  007FB0  0E00               	movlw	0
    295  007FB2  6E95               	movwf	3989,c	;volatile
    296  007FB4  0012               	return	
@@ -446,7 +446,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Thu Mar 22 16:18:57 2018
+Symbol Table                                                                                   Fri Apr 27 16:20:00 2018
 
                      l27 7FBA                       l28 7FD4             __CFG_CP0$OFF 000000  
            __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  

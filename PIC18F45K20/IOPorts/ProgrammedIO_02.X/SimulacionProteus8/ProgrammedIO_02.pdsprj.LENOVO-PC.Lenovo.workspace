@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
- <FRAME activewindow="0">
+ <FRAME activewindow="1">
   <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff27010000000000004d0b00001f050000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
+  <WINDOW type="default" module="VSMDEBUG"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
    <POPUP w="800" x="37" flags="00000002" y="248" h="200" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">528</ITEM>
+     <ITEM name="Message Column Width">649</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>

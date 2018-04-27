@@ -4128,15 +4128,19 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 38 "main.c"
+# 40 "main.c"
 void main(void)
 {
+
+
+
 
 OSCCONbits.IRCF = 0b111;
 
 
 LATD = 0;
 TRISDbits.RD0 = 0;
+
 
 while(1)
 {

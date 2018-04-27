@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Thu Mar 22 11:34:22 2018
+                                                                                               Fri Apr 27 16:06:59 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -87,7 +87,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     73 ;;
     74 ;; *************** function _main *****************
     75 ;; Defined at:
-    76 ;;		line 38 in file "main.c"
+    76 ;;		line 40 in file "main.c"
     77 ;; Parameters:    Size  Location     Type
     78 ;;		None
     79 ;; Auto vars:     Size  Location     Type
@@ -119,22 +119,22 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    105  007FF0                     _main:
    106                           	opt stack 31
    107                           
-   108                           ;main.c: 41: OSCCONbits.IRCF = 0b111;
+   108                           ;main.c: 46: OSCCONbits.IRCF = 0b111;
    109                           
    110                           ;incstack = 0
    111  007FF0  88D3               	bsf	4051,4,c	;volatile
    112  007FF2  8AD3               	bsf	4051,5,c	;volatile
    113  007FF4  8CD3               	bsf	4051,6,c	;volatile
    114                           
-   115                           ;main.c: 44: LATD = 0;
+   115                           ;main.c: 49: LATD = 0;
    116  007FF6  0E00               	movlw	0
    117  007FF8  6E8C               	movwf	3980,c	;volatile
    118                           
-   119                           ;main.c: 45: TRISDbits.RD0 = 0;
+   119                           ;main.c: 50: TRISDbits.RD0 = 0;
    120  007FFA  9095               	bcf	3989,0,c	;volatile
    121  007FFC                     
-   122                           ;main.c: 48: {
-   123                           ;main.c: 50: PORTDbits.RD0 = 1;
+   122                           ;main.c: 54: {
+   123                           ;main.c: 56: PORTDbits.RD0 = 1;
    124  007FFC  8083               	bsf	3971,0,c	;volatile
    125  007FFE  D7FE               	goto	l13
    126  008000                     __end_of_main:
@@ -235,7 +235,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Thu Mar 22 11:34:22 2018
+Symbol Table                                                                                   Fri Apr 27 16:06:59 2018
 
                      l13 7FFC             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
            __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000             __CFG_CPB$OFF 000000  
