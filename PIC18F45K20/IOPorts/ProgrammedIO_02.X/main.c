@@ -65,11 +65,11 @@ void main(void)
 void SetUp(void)
 {
     //Configuración frecuencia oscilador interno
-    OSCCONbits.IRCF = 0b111;    //Oscilador interno a 16 MHz
-    OSCTUNEbits.PLLEN = 1;      //PLL habilitada Fosc = 4 x 16MHz = 64MHz  
+    OSCCONbits.IRCF = 0b111; //Fosc = 16 MHz
+    OSCTUNEbits.PLLEN = 1; //PLL habilitada, Fosc = 4 x 16MHz = 64MHz
     
     //Configuración puertos digitales (Capitulo 10 I/O Ports DataSheet)
-    LATA = 0; //Inicializar el PuertoA, tambien es válido: PORTA = 0;
+    LATA = 0; //Inicializar PORTA, tambien es válido: PORTA = 0;
     
     /*Habilitación buffer entrada digital para los pines que trabajan como 
      * canales analogicos y digitales.
@@ -79,8 +79,8 @@ void SetUp(void)
     ANSELbits.ANS0 = 0; //Bufer de entrada digital habilitado para la línea RA0
     
     //Configuración sentido puertos I/O
-    TRISAbits.TRISA0 = 1;   //Línea RA0 como entrada
-    TRISAbits.TRISA1 = 0;   //Línea RA1 como salida
+    TRISAbits.TRISA0 = 1; //Línea RA0 como entrada
+    TRISAbits.TRISA1 = 0; //Línea RA1 como salida
     return;
 }
 

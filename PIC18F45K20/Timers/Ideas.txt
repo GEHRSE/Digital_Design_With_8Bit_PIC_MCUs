@@ -1,0 +1,4 @@
+hacer un ejemplo con el timer1 para hacer un segundero
+llega hasta 60 y se reinicia
+
+servomotor

@@ -14,6 +14,11 @@
 void SystemInitialize(void);
 
 //Variables globales
+volatile char c;
+volatile char d;
+static char uartBuffer[8];
+
+
 char Mensaje[] = "Microcontroladores y Microprocesadores";
 char Caracter = 'A';
 uint8_t a = 31;
@@ -27,7 +32,12 @@ void main(void)
     printf("\n\r");
     printf("a=%d, b=%.3f %s",a,b,"\n\r");
     printf("Letra = %c",Caracter);
-
+    printf("oprima comando")
+    
+    EUSART1_Read_Text(uartBuffer,8);
+    
+    printf(uartBuffer);
+    
     while(1);
     
     return;

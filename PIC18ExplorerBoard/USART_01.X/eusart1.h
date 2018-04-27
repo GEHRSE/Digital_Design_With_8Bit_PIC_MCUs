@@ -134,6 +134,8 @@ uint8_t EUSART1_Read(void);
     None
 */
 void EUSART1_Write(uint8_t txData);
+char EUSART1_Read_Char(char *Output);
+void EUSART1_Read_Text(char *Output, unsigned int length);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

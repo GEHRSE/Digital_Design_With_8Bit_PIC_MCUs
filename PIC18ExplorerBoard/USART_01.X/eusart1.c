@@ -80,7 +80,6 @@ void EUSART1_Initialize(void)
 
 }
 
-
 uint8_t EUSART1_Read(void)
 {
     while(!PIR1bits.RC1IF)
@@ -98,12 +97,25 @@ uint8_t EUSART1_Read(void)
     return RCREG;
 }
 
+char EUSART1_Read_Char(char *Output)
+{
+    Output = EUSART1_Read();
+    return Output;
+}
+
+void EUSART1_Read_Text(char *Output, unsigned int length)
+{
+    int i;
+    for(int i=0;i<length;i++)
+        Output[i] = EUSART1_Read();
+}
+
 void EUSART1_Write(uint8_t txData)
 {
     while(0 == PIR1bits.TX1IF)
     {
     }
-
+    
     TXREG = txData;    // Write the data byte to the USART.
 }
 
