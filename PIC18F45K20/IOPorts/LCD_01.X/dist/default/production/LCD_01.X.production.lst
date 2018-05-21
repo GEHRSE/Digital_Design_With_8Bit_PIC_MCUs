@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Fri Mar 23 13:42:24 2018
+                                                                                               Fri Apr 27 22:10:35 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -97,7 +97,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     83  0023D7  49                 	db	73
     84  0023D8  40                 	db	64
     85                           
-    86                           ;initializer for _a
+    86                           ;initializer for _u16_a
     87  0023D9  001F               	dw	31
     88                           
     89                           ;initializer for _Caracter
@@ -328,7 +328,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    314  00004F                     _b:
    315                           	opt stack 0
    316  00004F                     	ds	3
-   317  000052                     _a:
+   317  000052                     _u16_a:
    318                           	opt stack 0
    319  000052                     	ds	2
    320  000054                     _Caracter:
@@ -766,7 +766,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    752 ;;
    753 ;; *************** function _main *****************
    754 ;; Defined at:
-   755 ;;		line 44 in file "main.c"
+   755 ;;		line 47 in file "main.c"
    756 ;; Parameters:    Size  Location     Type
    757 ;;		None
    758 ;; Auto vars:     Size  Location     Type
@@ -804,19 +804,19 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    790  002136                     _main:
    791                           	opt stack 27
    792                           
-   793                           ;main.c: 46: SetUp();
+   793                           ;main.c: 49: SetUp();
    794                           
    795                           ;incstack = 0
    796  002136  ECE7  F011         	call	_SetUp	;wreg free
    797                           
-   798                           ;main.c: 48: Lcd_Init();
+   798                           ;main.c: 51: Lcd_Init();
    799  00213A  EC23  F00D         	call	_Lcd_Init	;wreg free
    800                           
-   801                           ;main.c: 49: Lcd_Cmd(12);
+   801                           ;main.c: 52: Lcd_Cmd(12);
    802  00213E  0E0C               	movlw	12
    803  002140  EC8C  F00C         	call	_Lcd_Cmd
    804                           
-   805                           ;main.c: 52: Lcd_Out(1,0,Mensaje);
+   805                           ;main.c: 55: Lcd_Out(1,0,Mensaje);
    806  002144  0E00               	movlw	0
    807  002146  6E04               	movwf	Lcd_Out@x,c
    808  002148  0E87               	movlw	low _Mensaje
@@ -826,15 +826,15 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    812  002150  0E01               	movlw	1
    813  002152  EC02  F011         	call	_Lcd_Out
    814                           
-   815                           ;main.c: 53: Lcd_Cmd(20);
+   815                           ;main.c: 56: Lcd_Cmd(20);
    816  002156  0E14               	movlw	20
    817  002158  EC8C  F00C         	call	_Lcd_Cmd
    818                           
-   819                           ;main.c: 54: Lcd_Chr_CP(Caracter);
+   819                           ;main.c: 57: Lcd_Chr_CP(Caracter);
    820  00215C  5054               	movf	_Caracter,w,c
    821  00215E  EC57  F00B         	call	_Lcd_Chr_CP
    822                           
-   823                           ;main.c: 57: sprintf(TextoLCD, "a=%d,b=%.3f",a,b);
+   823                           ;main.c: 60: sprintf(TextoLCD,"a=%d,b=%.3f",u16_a,b);
    824  002162  0E77               	movlw	low _TextoLCD
    825  002164  6E40               	movwf	sprintf@sp,c
    826  002166  0E00               	movlw	high _TextoLCD
@@ -843,14 +843,14 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    829  00216C  6E42               	movwf	sprintf@f,c
    830  00216E  0E06               	movlw	high STR_1
    831  002170  6E43               	movwf	sprintf@f+1,c
-   832  002172  C052  F044         	movff	_a,?_sprintf+4
-   833  002176  C053  F045         	movff	_a+1,?_sprintf+5
+   832  002172  C052  F044         	movff	_u16_a,?_sprintf+4
+   833  002176  C053  F045         	movff	_u16_a+1,?_sprintf+5
    834  00217A  C04F  F046         	movff	_b,?_sprintf+6
    835  00217E  C050  F047         	movff	_b+1,?_sprintf+7
    836  002182  C051  F048         	movff	_b+2,?_sprintf+8
    837  002186  EC42  F003         	call	_sprintf	;wreg free
    838                           
-   839                           ;main.c: 58: Lcd_Out(2,0,TextoLCD);
+   839                           ;main.c: 61: Lcd_Out(2,0,TextoLCD);
    840  00218A  0E00               	movlw	0
    841  00218C  6E04               	movwf	Lcd_Out@x,c
    842  00218E  0E77               	movlw	low _TextoLCD
@@ -5328,7 +5328,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   5306                           
   5307 ;; *************** function _SetUp *****************
   5308 ;; Defined at:
-  5309 ;;		line 68 in file "main.c"
+  5309 ;;		line 72 in file "main.c"
   5310 ;; Parameters:    Size  Location     Type
   5311 ;;		None
   5312 ;; Auto vars:     Size  Location     Type
@@ -5361,14 +5361,14 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
   5339  0023CE                     _SetUp:
   5340                           	opt stack 30
   5341                           
-  5342                           ;main.c: 70: OSCCONbits.IRCF = 0b111;
+  5342                           ;main.c: 77: OSCCONbits.IRCF = 0b111;
   5343                           
   5344                           ;incstack = 0
   5345  0023CE  88D3               	bsf	4051,4,c	;volatile
   5346  0023D0  8AD3               	bsf	4051,5,c	;volatile
   5347  0023D2  8CD3               	bsf	4051,6,c	;volatile
   5348                           
-  5349                           ;main.c: 71: return;
+  5349                           ;main.c: 79: return;
   5350  0023D4  0012               	return		;funcret
   5351  0023D6                     __end_of_SetUp:
   5352                           	opt stack 0
@@ -6695,92 +6695,92 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Fri Mar 23 13:42:24 2018
+Symbol Table                                                                                   Fri Apr 27 22:10:35 2018
 
-                      _a 0052                        _b 004F                       l31 2256  
-                     l32 2244                       l24 2222                       l25 2208  
-                     l26 223C                       l19 1AC4                       l27 220E  
-                     l28 2214                       l29 221A                       l68 219C  
-                     l93 13F6                       l96 14C2                       l99 10B0  
-           ___awdiv@sign 000C      ___wmul@multiplicand 0011             __CFG_CP0$OFF 000000  
-           __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
-           ___ftadd@exp1 0039             ___ftadd@exp2 0038             ___ftadd@sign 0037  
-                    l100 0FDC                      l110 0690                      l103 108C  
-                    l111 06AA                      l104 11DC                      l120 0730  
-                    l112 0722                      l121 0762                      l113 070C  
-                    l106 128C                      l130 08B0                      l114 06D4  
-                    l132 08D6                      l125 0CFC                      l133 0916  
-                    l117 0734                      l134 09DE                      l126 0776  
-                    l151 0B54                      l143 0A44                      l127 07B8  
-                    l160 0CF2                      l152 0B3E                      l161 0CDC  
-                    l137 0986                      l129 084A                      l170 0DC6  
-                    l154 0B78                      l411 1EDE                      l163 0D36  
-                    l155 0B7C                      l412 1EC8                      l172 0E70  
-                    l164 0D4E                      l156 0B9E                      l148 0B34  
-                    l173 0DE8                      l157 0CD0                      l149 0AA0  
-                    l414 1F06                      l510 1D44                      l158 0BEE  
-                    l415 1EFC                      l351 2022                      l511 1D54  
-                    l408 1EAA                      l352 202C                      l344 1FD4  
-                    l360 20FC                      l504 1CC2                      l168 0DA6  
-                    l409 1EA0                      l521 232E                      l353 203A  
-                    l345 1FE4                      l361 20F4                      l506 1CEA  
-                    l515 2394                      l443 157E                      l347 2002  
-                    l507 1D1C                      l380 1C20                      l348 1FFA  
-                    l364 2114                      l508 1D2C                      l540 23B8  
-                    l453 15DA                      l533 1E54                      l525 1DBA  
-                    l365 211E                      l357 20DA                      l462 1618  
-                    l454 15D0                      l534 1E48                      l382 1C5E  
-                    l366 212C                      l358 20E6                      l463 160E  
-                    l439 1554                      l527 1E30                      l383 1C4E  
-                    l448 15E4                      l536 1E70                      l528 1E20  
-                    l376 1B90                      l480 1812                      l465 163C  
-                    l466 1658                      l570 20A6                      l378 1BAE  
-                    l482 183E                      l467 1688                      l571 20B4  
-                    l379 1BF0                      l483 1878                      l580 21E4  
-                    l388 1C82                      l492 1900                      l484 18A0  
-                    l581 21F2                      l389 1C76                      l493 18F4  
-                    l566 2072                      l486 18DC                      l567 2066  
-                    l487 18CC                      l576 21BC                      l497 1F60  
-                    l577 21B0                      l498 1F90                      l587 2278  
-                    l588 226C             __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000  
-           __CFG_BORV$18 000000             ___awmod@sign 0006                      wreg 000FE8  
-            _sprintf$843 0060             __CFG_LVP$OFF 000000                     l1807 1FBC  
-                   l2713 0DE8                     l2625 0B3E                     l2717 0E6C  
-                   l2577 0960                     l2569 0916                     l2597 0A48  
-                   l2687 0D52                     STR_1 0677                     u2110 1906  
-                   u2031 17F6                     u2051 1822                     u1420 1E92  
-                   u2300 1E5A                     u1501 1526                     u3007 1A2A  
-                   u3017 1A3A                     u2241 1D9E                     u1530 1546  
-                   u2330 2076                     u1460 1F10                     u2260 1DD8  
-                   u2180 1C88                     u1701 1CAA                     u1630 15EC  
-                   u1560 1570                     u2360 21C0                     u2265 1DD0  
-                   u1721 1CD2                     u2610 0A80                     u2530 08E8  
-                   u1491 1512                     u1660 1620                     u2540 0928  
-                   u1590 15AE                     u2640 0B62                     u1905 1964  
-                   u1850 2100                     u2650 0B72                     u2570 0960  
-                   u2490 07F0                     u1915 16BC                     u2740 0D8A  
-                   u1925 16D6                     u1790 2006                     u1935 16FA  
-                   u2495 07E6                     u2817 1730                     u2907 1A94  
-                   u2827 173A                     u2780 0E80                     u1885 1926  
-                   u2917 1AA4                     u2837 17B6                     u2790 0E9A  
-                   u1895 1940                     u2927 1AB4                     u2847 17C0  
-                   u2937 1ADE                     u2857 17CC                     u2947 1AF8  
-                   u2867 17DA                     u2957 1B24                     u2877 1A64  
-                   u2967 1B3E                     u2887 1A74                     u2977 199A  
-                   u2897 1A84                     u2987 19A4                     u2997 1A20  
-           __CFG_PWRT$ON 000000                     _main 2136             ___ftpack@arg 0001  
-           ___ftpack@exp 0004                     fsr2h 000FDA                     indf2 000FDF  
-                   fsr1l 000FE1                     fsr2l 000FD9                     prodh 000FF4  
-                   prodl 000FF3                     start 0000            __CFG_IESO$OFF 000000  
-        __end_of_Lcd_Cmd 1A46          __end_of_Lcd_Out 2266            __CFG_MCLRE$ON 000000  
-           ___ftmul@cntr 0022             ___param_bank 000000             ___ftmul@sign 0023  
-             _Lcd_Chr_CP 16AE             ___fttol@exp1 0039             ___fttol@lval 0035  
-                  ?_main 0001          __end_of___awdiv 2044          __end_of___ftadd 16AE  
-        __end_of___awmod 2136          __end_of___ftneg 23A2          __end_of___lldiv 20C6  
-        __end_of___ftmul 1D8E          ___awdiv@divisor 0009          __end_of___llmod 2204  
-        __end_of___ftsub 2358          __end_of___fttol 1E82          ___awdiv@counter 000B  
-          __CFG_WRT0$OFF 000000            __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000  
-          __CFG_WRT3$OFF 000000             ___lltoft@exp 0011           __CFG_EBTR0$OFF 000000  
+                      _b 004F                       l31 2256                       l32 2244  
+                     l24 2222                       l25 2208                       l26 223C  
+                     l19 1AC4                       l27 220E                       l28 2214  
+                     l29 221A                       l68 219C                       l93 13F6  
+                     l96 14C2                       l99 10B0             ___awdiv@sign 000C  
+    ___wmul@multiplicand 0011             __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000  
+           __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000             ___ftadd@exp1 0039  
+           ___ftadd@exp2 0038             ___ftadd@sign 0037                      l100 0FDC  
+                    l110 0690                      l103 108C                      l111 06AA  
+                    l104 11DC                      l120 0730                      l112 0722  
+                    l121 0762                      l113 070C                      l106 128C  
+                    l130 08B0                      l114 06D4                      l132 08D6  
+                    l125 0CFC                      l133 0916                      l117 0734  
+                    l134 09DE                      l126 0776                      l151 0B54  
+                    l143 0A44                      l127 07B8                      l160 0CF2  
+                    l152 0B3E                      l161 0CDC                      l137 0986  
+                    l129 084A                      l170 0DC6                      l154 0B78  
+                    l411 1EDE                      l163 0D36                      l155 0B7C  
+                    l412 1EC8                      l172 0E70                      l164 0D4E  
+                    l156 0B9E                      l148 0B34                      l173 0DE8  
+                    l157 0CD0                      l149 0AA0                      l414 1F06  
+                    l510 1D44                      l158 0BEE                      l415 1EFC  
+                    l351 2022                      l511 1D54                      l408 1EAA  
+                    l352 202C                      l344 1FD4                      l360 20FC  
+                    l504 1CC2                      l168 0DA6                      l409 1EA0  
+                    l521 232E                      l353 203A                      l345 1FE4  
+                    l361 20F4                      l506 1CEA                      l515 2394  
+                    l443 157E                      l347 2002                      l507 1D1C  
+                    l380 1C20                      l348 1FFA                      l364 2114  
+                    l508 1D2C                      l540 23B8                      l453 15DA  
+                    l533 1E54                      l525 1DBA                      l365 211E  
+                    l357 20DA                      l462 1618                      l454 15D0  
+                    l534 1E48                      l382 1C5E                      l366 212C  
+                    l358 20E6                      l463 160E                      l439 1554  
+                    l527 1E30                      l383 1C4E                      l448 15E4  
+                    l536 1E70                      l528 1E20                      l376 1B90  
+                    l480 1812                      l465 163C                      l466 1658  
+                    l570 20A6                      l378 1BAE                      l482 183E  
+                    l467 1688                      l571 20B4                      l379 1BF0  
+                    l483 1878                      l580 21E4                      l388 1C82  
+                    l492 1900                      l484 18A0                      l581 21F2  
+                    l389 1C76                      l493 18F4                      l566 2072  
+                    l486 18DC                      l567 2066                      l487 18CC  
+                    l576 21BC                      l497 1F60                      l577 21B0  
+                    l498 1F90                      l587 2278                      l588 226C  
+           __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000             __CFG_BORV$18 000000  
+           ___awmod@sign 0006                      wreg 000FE8              _sprintf$843 0060  
+           __CFG_LVP$OFF 000000                     l1807 1FBC                     l2713 0DE8  
+                   l2625 0B3E                     l2717 0E6C                     l2577 0960  
+                   l2569 0916                     l2597 0A48                     l2687 0D52  
+                   STR_1 0677                     u2110 1906                     u2031 17F6  
+                   u2051 1822                     u1420 1E92                     u2300 1E5A  
+                   u1501 1526                     u3007 1A2A                     u3017 1A3A  
+                   u2241 1D9E                     u1530 1546                     u2330 2076  
+                   u1460 1F10                     u2260 1DD8                     u2180 1C88  
+                   u1701 1CAA                     u1630 15EC                     u1560 1570  
+                   u2360 21C0                     u2265 1DD0                     u1721 1CD2  
+                   u2610 0A80                     u2530 08E8                     u1491 1512  
+                   u1660 1620                     u2540 0928                     u1590 15AE  
+                   u2640 0B62                     u1905 1964                     u1850 2100  
+                   u2650 0B72                     u2570 0960                     u2490 07F0  
+                   u1915 16BC                     u2740 0D8A                     u1925 16D6  
+                   u1790 2006                     u1935 16FA                     u2495 07E6  
+                   u2817 1730                     u2907 1A94                     u2827 173A  
+                   u2780 0E80                     u1885 1926                     u2917 1AA4  
+                   u2837 17B6                     u2790 0E9A                     u1895 1940  
+                   u2927 1AB4                     u2847 17C0                     u2937 1ADE  
+                   u2857 17CC                     u2947 1AF8                     u2867 17DA  
+                   u2957 1B24                     u2877 1A64                     u2967 1B3E  
+                   u2887 1A74                     u2977 199A                     u2897 1A84  
+                   u2987 19A4                     u2997 1A20             __CFG_PWRT$ON 000000  
+                   _main 2136             ___ftpack@arg 0001             ___ftpack@exp 0004  
+                   fsr2h 000FDA                     indf2 000FDF                     fsr1l 000FE1  
+                   fsr2l 000FD9                     prodh 000FF4                     prodl 000FF3  
+                   start 0000            __CFG_IESO$OFF 000000          __end_of_Lcd_Cmd 1A46  
+        __end_of_Lcd_Out 2266            __CFG_MCLRE$ON 000000             ___ftmul@cntr 0022  
+           ___param_bank 000000             ___ftmul@sign 0023               _Lcd_Chr_CP 16AE  
+           ___fttol@exp1 0039             ___fttol@lval 0035                    ?_main 0001  
+        __end_of___awdiv 2044          __end_of___ftadd 16AE          __end_of___awmod 2136  
+        __end_of___ftneg 23A2          __end_of___lldiv 20C6          __end_of___ftmul 1D8E  
+        ___awdiv@divisor 0009          __end_of___llmod 2204          __end_of___ftsub 2358  
+        __end_of___fttol 1E82          ___awdiv@counter 000B            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+                  _u16_a 0052             ___lltoft@exp 0011           __CFG_EBTR0$OFF 000000  
          __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000           __CFG_EBTR2$OFF 000000  
                   _SetUp 23CE           __CFG_EBTR3$OFF 000000            __CFG_WRTB$OFF 000000  
           __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000           __CFG_EBTRB$OFF 000000  

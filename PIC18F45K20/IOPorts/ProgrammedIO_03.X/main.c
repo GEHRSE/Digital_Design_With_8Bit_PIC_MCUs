@@ -2,7 +2,7 @@
  * FileName:        main.c
  * ProjectName:     ProgrammedIO_03 
  * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
- * Topic:           I/O Ports
+ * Topic:           I/O Ports - Unconditional Programmed I/O
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
  * Compiler:        XC8, Ver. 1.45

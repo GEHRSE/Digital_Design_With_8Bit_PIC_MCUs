@@ -31,21 +31,21 @@
 [v _Lcd_Chr_CP Lcd_Chr_CP `(v  1 e 1 0 ]
 "150
 [v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
-"54 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_02.X\main.c
+"58 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_02.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"83
+"93
 [v _SetUp SetUp `(v  1 e 1 0 ]
-"103
+"126
 [v _SWdelay SWdelay `(v  1 e 1 0 ]
-[s S261 . 1 `uc 1 ANS8 1 0 :1:0 
+[s S262 . 1 `uc 1 ANS8 1 0 :1:0 
 `uc 1 ANS9 1 0 :1:1 
 `uc 1 ANS10 1 0 :1:2 
 `uc 1 ANS11 1 0 :1:3 
 `uc 1 ANS12 1 0 :1:4 
 ]
 "520 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f45k20.h
-[u S267 . 1 `S261 1 . 1 0 ]
-[v _ANSELHbits ANSELHbits `VES267  1 e 1 @3967 ]
+[u S268 . 1 `S262 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES268  1 e 1 @3967 ]
 [s S139 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
@@ -160,24 +160,24 @@
 ]
 [u S244 . 1 `S231 1 . 1 0 `S237 1 . 1 0 ]
 [v _OSCCONbits OSCCONbits `VES244  1 e 1 @4051 ]
-"48 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_02.X\main.c
+"52 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_02.X\main.c
 [v _Mensaje1 Mensaje1 `[17]uc  1 e 17 0 ]
-"49
+"53
 [v _Mensaje2 Mensaje2 `[17]uc  1 e 17 0 ]
-"54
+"58
 [v _main main `(v  1 e 1 0 ]
 {
-"76
+"85
 } 0
-"83
+"93
 [v _SetUp SetUp `(v  1 e 1 0 ]
 {
-"95
+"118
 } 0
-"103
+"126
 [v _SWdelay SWdelay `(v  1 e 1 0 ]
 {
-"109
+"132
 } 0
 "94 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_02.X\lcd.h
 [v _Lcd_Out Lcd_Out `(v  1 e 1 0 ]

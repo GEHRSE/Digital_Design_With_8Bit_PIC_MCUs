@@ -1,35 +1,39 @@
 /*******************************************************************************
  * FileName:        main.c
  * ProjectName:     LCD_Keyboard_01
+ * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
+ * Topic:           I/O Ports
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8
- * Version:         1.45
+ * Compiler:        XC8, Ver. 1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
  * Date:            Marzo de 2018
  *******************************************************************************
  * REQUERIMIENTO
  * Oscilador: Interno a 16 MHz, Fosc = 16 MHz.
- * Usando la libreria ldc.h imprimir la siguiente información alfanumerica:
- * 1. Un caracter
- * 2. String de caracteres
- * 3. Dato (int) y (float) usando la función sprintf de la libreria stdio.h
+ * Usando la libreria KeyPad.h  y ldc.h capturar y/o imprimir:
+ * 1. Inicio línea 1: Imprimir "DIGITE LA CLAVE:"
+ * 2. Inicio línea 2: Imprimir "*" cada vez que se captura una tecla
+ * 3. Se deben capturar 4 dígitos
+ * 4. Borrar LCD e imprimir los 4 dígitos capturados
+ * -Ver Descripcion.txt
  ******************************************************************************/
+
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
-#include <xc.h>
-#include "ConfigurationBits.h"
-#include <stdint.h>
+#include <xc.h> //Lib con información del MCU
+#include <stdint.h> //Lib estándar para enteros
 #include <stdio.h> //Libreria para sprintf
-#include "lcd.h" //Libreria para el manejo de la LCD
+#include "ConfigurationBits.h" //Bits de configuración
+#include "lcd.h" //Libreria LCD
 #include "KeyPad.h" //Libreria para el manejo del Teclado Matricial
 
 /*******************************************************************************
  * Macros
  ******************************************************************************/
-#define _XTAL_FREQ 16000000
+#define _XTAL_FREQ 16000000 //Macro para __delay_ms(), __delay_us(), etc.
 
 /*******************************************************************************
  * Prototipos de funciones
@@ -42,23 +46,25 @@ void SetUp(void);
 char Mensaje1[] = "DIGITE LA CLAVE:";
 char Mensaje2[] = "Clave Digitada:";
 char Clave[4] = {'0','0','0','0'};
-uint8_t i;
+uint8_t u8_i;
 
 /*******************************************************************************
  * Función Principal
  ******************************************************************************/
 void main(void)
 {
-    SetUp(); //Configuración inicial
+    //--Configutaciones Iniciales
+    SetUp();
     Lcd_Init(); //Se inicializa la LCD
     
     Lcd_Cmd(LCD_CURSOR_OFF); //Apagar cursor
     Lcd_Out(1,0,Mensaje1); //Mensaje1 inicio línea 1
     Lcd_Cmd(LCD_SECOND_ROW); //Segunda línea
     
-    for(i = 0; i <= 3; i++)
+    //Capturar 4 digitos desde el teclado
+    for(u8_i = 0; u8_i <= 3; u8_i++)
     {
-        Clave[i] = GetKey(); //Captura tecla
+        Clave[u8_i] = GetKey(); //Captura tecla
         __delay_ms(300); //Retardo
         Lcd_Chr_CP('*'); //Imprimir *
     }
@@ -70,15 +76,20 @@ void main(void)
     
     while(1); //Bucle Infinito
 }
+
 /*******************************************************************************
- * FUNCTION:    SetUp()
- * INPUTS:      None
- * OUTPUTS:     None
- * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
+ * FUNCIÓN:     SetUp()
+ * ENTRADAS:    Ninguna
+ * SALIDAS:     Ninguna
+ * DESCRIPCIÓN: Configuración inicial (oscilador, puertos, etc.)
  ******************************************************************************/
-void SetUp()
+void SetUp(void)
 {
-    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16 MHz
+    //---A---Configuración Oscilador (Capitulo 2 DataSheet: Oscillator Module)
+
+    //--A.1--Configuración oscilador interno (si es el caso)
+    OSCCONbits.IRCF = 0b111; //HFINTOSC = 16 MHz, Fosc = 16 MHz
+
     return;
 }
 

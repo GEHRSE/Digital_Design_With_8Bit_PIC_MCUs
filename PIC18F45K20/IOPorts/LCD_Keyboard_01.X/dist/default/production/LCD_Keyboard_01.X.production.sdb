@@ -37,9 +37,9 @@
 [v _Lcd_Chr_CP Lcd_Chr_CP `(v  1 e 1 0 ]
 "150
 [v _Lcd_Cmd Lcd_Cmd `(v  1 e 1 0 ]
-"50 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\main.c
+"54 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"79
+"86
 [v _SetUp SetUp `(v  1 e 1 0 ]
 [s S146 . 1 `uc 1 ANS8 1 0 :1:0 
 `uc 1 ANS9 1 0 :1:1 
@@ -115,23 +115,23 @@
 [v _OSCCONbits OSCCONbits `VES179  1 e 1 @4051 ]
 "24 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\KeyPad.h
 [v _Keys Keys `[4][4]uc  1 e 16 0 ]
-"42 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\main.c
+"46 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\main.c
 [v _Mensaje1 Mensaje1 `[17]uc  1 e 17 0 ]
-"43
+"47
 [v _Mensaje2 Mensaje2 `[16]uc  1 e 16 0 ]
-"44
+"48
 [v _Clave Clave `[4]uc  1 e 4 0 ]
-"45
-[v _i i `uc  1 e 1 0 ]
-"50
+"49
+[v _u8_i u8_i `uc  1 e 1 0 ]
+"54
 [v _main main `(v  1 e 1 0 ]
 {
-"72
+"78
 } 0
-"79
+"86
 [v _SetUp SetUp `(v  1 e 1 0 ]
 {
-"83
+"94
 } 0
 "94 C:\GitHub\Digital_Design_With_8Bit_PIC_MCUs\PIC18F45K20\IOPorts\LCD_Keyboard_01.X\lcd.h
 [v _Lcd_Out Lcd_Out `(v  1 e 1 0 ]

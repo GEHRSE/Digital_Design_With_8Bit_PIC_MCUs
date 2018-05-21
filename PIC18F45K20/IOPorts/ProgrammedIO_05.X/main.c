@@ -2,19 +2,16 @@
  * FileName:        main.c
  * ProjectName:     ProgrammedIO_05
  * Course:          Diseño Digital con Microcontroladores PIC de 8 bits
- * Topic:           I/O Ports
+ * Topic:           I/O Ports - Conditional Programmed I/O
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8, Ver. X.XX
+ * Compiler:        XC8, Ver. 1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
- * Date:            Marzo de 2018
+ * Date:            Mayo de 2018
  *******************************************************************************
  * REQUERIMIENTO
- * Oscilador: Interno a 16 MHz con PLL, Fosc = 64 MHz.
- * Se captura un número de 4 bits (0-15) por las líneas RB<3:0>.
- * Si el número esta entre 0-9 se visualiza en un display 7 segmentos cátodo
- * común, conectado en el PORTD, de lo contrario no se visualiza nada
+ * Oscilador: Interno a 16 MHz, Fosc = 16 MHz.
  * -Ver Descripcion.txt
  ******************************************************************************/
 
@@ -28,25 +25,38 @@
 /*******************************************************************************
  * Macros
  ******************************************************************************/
-//#define _XTAL_FREQ XX000000 //Macro necesario para __delay_ms(), etc
+#define _XTAL_FREQ 16000000 //Macro necesario para __delay_ms(), etc
+
+#define Pulsador PORTBbits.RB0
+#define Oprimido 1
 
 /*******************************************************************************
  * Prototipos de funciones
  ******************************************************************************/
 void SetUp(void);
+void DelayMseg(uint16_t u16_n);
 
 /*******************************************************************************
  * Variables globales
  ******************************************************************************/
-//Arreglo para el manejo de un display 7 segmentos de cátodo común
-//                       0    1    2    3    4    5    6    7    8    9
-uint8_t Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+//Arreglo para el manejo del dado formado por 7 LEDS
+//                 0    1    2    3    4    5    6
+uint8_t Dado[] = {0x00,0x08,0x22,0x2A,0x55,0x5D,0x77};
+//RD7-RD6-RD5-RD4-RD3-RD2-RD1-RD0
+// -   D8  D7  D6  D5  D4  D3  D2 
+// Disposición LEDS D2:D8 para el dado
+//     D2    D6
+//     D3 D5 D7
+//     D4    D8
 
 /*******************************************************************************
  * Función Principal
  ******************************************************************************/
 void main(void)
 {
+    //Variables locales
+    uint8_t u8_j = 1;
+    
     //--Configutaciones Iniciales
     SetUp();
 
@@ -54,16 +64,20 @@ void main(void)
     while(1)
     {
         //Para este caso el display mostrará números del 0 al 9
-        if(PORTB < 10)
+        if(Pulsador == Oprimido)
         {
-            PORTD = Disp7SegCC[PORTB];
+            while(Pulsador == Oprimido)
+            {
+                __delay_ms(1);
+            }
+            PORTD = Dado[u8_j];
+            DelayMseg(3000);
+            PORTD = 0x00;
+            u8_j = 0;
         }
-        else //para >= 10 no se muestra nada en el display
-        {
-            PORTD = 0x00; //se apagan todos los segmentos del display
-        }
+        u8_j++;
+        if(u8_j == 7)u8_j = 1;
     }
-
     return;
 }
 
@@ -79,9 +93,6 @@ void SetUp(void)
 
     //--A.1--Configuración oscilador interno
     OSCCONbits.IRCF = 0b111; //HFINTOSC = 16 MHz, Fosc = 16 MHz
-    
-    //--A.2--Habilitación PLL
-    OSCTUNEbits.PLLEN = 1; //Fosc = 4 x 16 MHz = 64 MHz
 
     //---B---Configuración I/O Ports (Capitulo 10 DataSheet: I/O Ports)
 
@@ -95,15 +106,25 @@ void SetUp(void)
     //ANSELH --> ANS12(RB0),ANS11(RB4),ANS10(RB1),ANS9(RB3),ANS8(RB2)
     //Sólo es necesaria cuando se desee configurar dichos pines como entradas digitales
     ANSELHbits.ANS12 = 0; //RB0
-    ANSELHbits.ANS10 = 0; //RB1 
-    ANSELHbits.ANS8 = 0; //RB2
-    ANSELHbits.ANS9 = 0; //RB3
 
     //--B.3--Sentido I/O Ports
-    TRISB = 0xFF; //Líneas del PORTB como entradas
+    TRISBbits.TRISB0; //Línea RB0 como entrada
     TRISD = 0x00; //Líneas del PORTD como salidas
 
     return;
+}
+
+/*******************************************************************************
+ * FUNCIÓN:     DelayMseg()
+ * ENTRADAS:    n: milisegundos deseados
+ * SALIDAS:     Ninguna
+ * DESCRIPCIÓN: Retardo de n milisegundos
+ ******************************************************************************/
+void DelayMseg(uint16_t u16_n) //n -> milisegundos
+{
+    uint16_t u16_i;
+    for (u16_i=0; u16_i < u16_n; u16_i++)
+        __delay_ms(1);
 }
 
 /*******************************************************************************

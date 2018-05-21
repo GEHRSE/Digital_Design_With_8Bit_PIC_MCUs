@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Wed Mar 28 19:37:05 2018
+                                                                                               Fri Apr 27 22:59:57 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -71,20 +71,20 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     57                           
     58                           ;initializer for _Mensaje2
     59  007B3E  20                 	db	32
-    60  007B3F  20                 	db	32
-    61  007B40  54                 	db	84
-    62  007B41  61                 	db	97
-    63  007B42  6C                 	db	108
-    64  007B43  6C                 	db	108
-    65  007B44  65                 	db	101
-    66  007B45  72                 	db	114
-    67  007B46  20                 	db	32
-    68  007B47  4E                 	db	78
-    69  007B48  6F                 	db	111
-    70  007B49  2E                 	db	46
-    71  007B4A  20                 	db	32
-    72  007B4B  32                 	db	50
-    73  007B4C  20                 	db	32
+    60  007B3F  49                 	db	73
+    61  007B40  6E                 	db	110
+    62  007B41  67                 	db	103
+    63  007B42  20                 	db	32
+    64  007B43  45                 	db	69
+    65  007B44  6C                 	db	108
+    66  007B45  65                 	db	101
+    67  007B46  63                 	db	99
+    68  007B47  74                 	db	116
+    69  007B48  72                 	db	114
+    70  007B49  6F                 	db	111
+    71  007B4A  6E                 	db	110
+    72  007B4B  69                 	db	105
+    73  007B4C  6B                 	db	107
     74  007B4D  20                 	db	32
     75  007B4E  00                 	db	0
     76                           
@@ -107,8 +107,8 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
     93  007B5E  32                 	db	50
     94  007B5F  00                 	db	0
     95  0000                     _TRISBbits	set	3987
-    96  0000                     _LATB	set	3978
-    97  0000                     _ANSELHbits	set	3967
+    96  0000                     _ANSELHbits	set	3967
+    97  0000                     _LATB	set	3978
     98  0000                     _OSCCONbits	set	4051
     99  0000                     _PORTBbits	set	3969
    100  0000                     _PORTDbits	set	3971
@@ -226,7 +226,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    212 ;;
    213 ;; *************** function _main *****************
    214 ;; Defined at:
-   215 ;;		line 54 in file "main.c"
+   215 ;;		line 58 in file "main.c"
    216 ;; Parameters:    Size  Location     Type
    217 ;;		None
    218 ;; Auto vars:     Size  Location     Type
@@ -263,19 +263,19 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    249  007BBC                     _main:
    250                           	opt stack 29
    251                           
-   252                           ;main.c: 56: SetUp();
+   252                           ;main.c: 61: SetUp();
    253                           
    254                           ;incstack = 0
    255  007BBC  EC95  F03D         	call	_SetUp	;wreg free
    256                           
-   257                           ;main.c: 57: Lcd_Init();
+   257                           ;main.c: 63: Lcd_Init();
    258  007BC0  EC37  F03E         	call	_Lcd_Init	;wreg free
    259                           
-   260                           ;main.c: 58: Lcd_Cmd(12);
+   260                           ;main.c: 64: Lcd_Cmd(12);
    261  007BC4  0E0C               	movlw	12
    262  007BC6  ECCD  F03E         	call	_Lcd_Cmd
    263                           
-   264                           ;main.c: 60: Lcd_Out(1,0,Mensaje1);
+   264                           ;main.c: 66: Lcd_Out(1,0,Mensaje1);
    265  007BCA  0E00               	movlw	0
    266  007BCC  6E26               	movwf	Lcd_Out@x,c
    267  007BCE  0E12               	movlw	low _Mensaje1
@@ -285,7 +285,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    271  007BD6  0E01               	movlw	1
    272  007BD8  EC06  F03E         	call	_Lcd_Out
    273                           
-   274                           ;main.c: 61: Lcd_Out(2,0,Mensaje2);
+   274                           ;main.c: 67: Lcd_Out(2,0,Mensaje2);
    275  007BDC  0E00               	movlw	0
    276  007BDE  6E26               	movwf	Lcd_Out@x,c
    277  007BE0  0E01               	movlw	low _Mensaje2
@@ -295,30 +295,30 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    281  007BE8  0E02               	movlw	2
    282  007BEA  EC06  F03E         	call	_Lcd_Out
    283  007BEE                     
-   284                           ;main.c: 64: {
-   285                           ;main.c: 65: if (PORTBbits.RB1 == 1)
+   284                           ;main.c: 71: {
+   285                           ;main.c: 72: if (PORTBbits.RB1 == 1)
    286  007BEE  A281               	btfss	3969,1,c	;volatile
    287  007BF0  D005               	goto	l71
    288                           
-   289                           ;main.c: 66: {
-   290                           ;main.c: 67: SWdelay();
+   289                           ;main.c: 73: {
+   290                           ;main.c: 74: SWdelay();
    291  007BF2  ECC5  F03D         	call	_SWdelay	;wreg free
    292                           
-   293                           ;main.c: 68: Lcd_Cmd(24);
+   293                           ;main.c: 75: Lcd_Cmd(24);
    294  007BF6  0E18               	movlw	24
    295  007BF8  ECCD  F03E         	call	_Lcd_Cmd
    296  007BFC                     l71:
    297                           
-   298                           ;main.c: 69: }
-   299                           ;main.c: 70: if (PORTBbits.RB0 == 1)
+   298                           ;main.c: 76: }
+   299                           ;main.c: 77: if (PORTBbits.RB0 == 1)
    300  007BFC  A081               	btfss	3969,0,c	;volatile
    301  007BFE  D7F7               	goto	l70
    302                           
-   303                           ;main.c: 71: {
-   304                           ;main.c: 72: SWdelay();
+   303                           ;main.c: 78: {
+   304                           ;main.c: 79: SWdelay();
    305  007C00  ECC5  F03D         	call	_SWdelay	;wreg free
    306                           
-   307                           ;main.c: 73: Lcd_Cmd(28);
+   307                           ;main.c: 80: Lcd_Cmd(28);
    308  007C04  0E1C               	movlw	28
    309  007C06  ECCD  F03E         	call	_Lcd_Cmd
    310  007C0A  D7F1               	goto	l70
@@ -334,7 +334,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    320                           
    321 ;; *************** function _SetUp *****************
    322 ;; Defined at:
-   323 ;;		line 83 in file "main.c"
+   323 ;;		line 93 in file "main.c"
    324 ;; Parameters:    Size  Location     Type
    325 ;;		None
    326 ;; Auto vars:     Size  Location     Type
@@ -367,27 +367,27 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    353  007B2A                     _SetUp:
    354                           	opt stack 30
    355                           
-   356                           ;main.c: 85: OSCCONbits.IRCF = 0b111;
+   356                           ;main.c: 98: OSCCONbits.IRCF = 0b111;
    357                           
    358                           ;incstack = 0
    359  007B2A  88D3               	bsf	4051,4,c	;volatile
    360  007B2C  8AD3               	bsf	4051,5,c	;volatile
    361  007B2E  8CD3               	bsf	4051,6,c	;volatile
    362                           
-   363                           ;main.c: 88: ANSELHbits.ANS12 = 0;
-   364  007B30  987F               	bcf	3967,4,c	;volatile
-   365                           
-   366                           ;main.c: 89: ANSELHbits.ANS10 = 0;
-   367  007B32  947F               	bcf	3967,2,c	;volatile
-   368                           
-   369                           ;main.c: 90: LATB = 0;
-   370  007B34  0E00               	movlw	0
-   371  007B36  6E8A               	movwf	3978,c	;volatile
+   363                           ;main.c: 103: LATB = 0;
+   364  007B30  0E00               	movlw	0
+   365  007B32  6E8A               	movwf	3978,c	;volatile
+   366                           
+   367                           ;main.c: 110: ANSELHbits.ANS12 = 0;
+   368  007B34  987F               	bcf	3967,4,c	;volatile
+   369                           
+   370                           ;main.c: 111: ANSELHbits.ANS10 = 0;
+   371  007B36  947F               	bcf	3967,2,c	;volatile
    372                           
-   373                           ;main.c: 91: TRISBbits.TRISB1 = 1;
+   373                           ;main.c: 114: TRISBbits.TRISB1 = 1;
    374  007B38  8293               	bsf	3987,1,c	;volatile
    375                           
-   376                           ;main.c: 92: TRISBbits.TRISB0 = 1;
+   376                           ;main.c: 115: TRISBbits.TRISB0 = 1;
    377  007B3A  8093               	bsf	3987,0,c	;volatile
    378  007B3C  0012               	return	
    379  007B3E                     __end_of_SetUp:
@@ -402,7 +402,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    388                           
    389 ;; *************** function _SWdelay *****************
    390 ;; Defined at:
-   391 ;;		line 103 in file "main.c"
+   391 ;;		line 126 in file "main.c"
    392 ;; Parameters:    Size  Location     Type
    393 ;;		None
    394 ;; Auto vars:     Size  Location     Type
@@ -435,12 +435,12 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    421  007B8A                     _SWdelay:
    422                           	opt stack 30
    423                           
-   424                           ;main.c: 105: while(PORTBbits.RB1 == 1)
+   424                           ;main.c: 128: while(PORTBbits.RB1 == 1)
    425                           
    426                           ;incstack = 0
    427  007B8A  D009               	goto	l81
    428  007B8C                     
-   429                           ;main.c: 106: _delay((unsigned long)((1)*(16000000/4000.0)));
+   429                           ;main.c: 129: _delay((unsigned long)((1)*(16000000/4000.0)));
    430  007B8C  0E06               	movlw	6
    431  007B8E  6E23               	movwf	??_SWdelay& (0+255),c
    432  007B90  0E30               	movlw	48
@@ -455,7 +455,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    441  007BA0  D00A               	goto	l84
    442  007BA2  D7F4               	goto	l82
    443  007BA4                     
-   444                           ;main.c: 108: _delay((unsigned long)((1)*(16000000/4000.0)));
+   444                           ;main.c: 131: _delay((unsigned long)((1)*(16000000/4000.0)));
    445  007BA4  0E06               	movlw	6
    446  007BA6  6E23               	movwf	??_SWdelay& (0+255),c
    447  007BA8  0E30               	movlw	48
@@ -1518,7 +1518,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Wed Mar 28 19:37:05 2018
+Symbol Table                                                                                   Fri Apr 27 22:59:57 2018
 
                      l40 7C4C                       l32 7C2A                       l33 7C10  
                      l34 7C44                       l27 7CEC                       l35 7C16  

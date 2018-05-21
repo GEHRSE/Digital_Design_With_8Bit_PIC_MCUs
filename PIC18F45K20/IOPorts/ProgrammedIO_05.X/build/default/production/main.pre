@@ -4220,13 +4220,17 @@ typedef uint16_t uintptr_t;
 
 # 36 "main.c"
 void SetUp(void);
+void DelayMseg(uint16_t u16_n);
 
-# 43
-uint8_t Disp7SegCC[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+# 44
+uint8_t Dado[] = {0x00,0x08,0x22,0x2A,0x55,0x5D,0x77};
 
-# 48
+# 55
 void main(void)
 {
+
+uint8_t u8_j = 1;
+
 
 SetUp();
 
@@ -4234,20 +4238,24 @@ SetUp();
 while(1)
 {
 
-if(PORTB < 10)
+if(PORTBbits.RB0 == 1)
 {
-PORTD = Disp7SegCC[PORTB];
+while(PORTBbits.RB0 == 1)
+{
+_delay((unsigned long)((1)*(16000000/4000.0)));
 }
-else
-{
+PORTD = Dado[u8_j];
+DelayMseg(3000);
 PORTD = 0x00;
+u8_j = 0;
 }
+u8_j++;
+if(u8_j == 7)u8_j = 1;
 }
-
 return;
 }
 
-# 76
+# 90
 void SetUp(void)
 {
 
@@ -4256,24 +4264,26 @@ void SetUp(void)
 OSCCONbits.IRCF = 0b111;
 
 
-OSCTUNEbits.PLLEN = 1;
-
-
 
 
 LATB = 0;
 LATD = 0;
 
-# 97
+# 108
 ANSELHbits.ANS12 = 0;
-ANSELHbits.ANS10 = 0;
-ANSELHbits.ANS8 = 0;
-ANSELHbits.ANS9 = 0;
 
 
-TRISB = 0xFF;
+TRISBbits.TRISB0;
 TRISD = 0x00;
 
 return;
+}
+
+# 123
+void DelayMseg(uint16_t u16_n)
+{
+uint16_t u16_i;
+for (u16_i=0; u16_i < u16_n; u16_i++)
+_delay((unsigned long)((1)*(16000000/4000.0)));
 }
 

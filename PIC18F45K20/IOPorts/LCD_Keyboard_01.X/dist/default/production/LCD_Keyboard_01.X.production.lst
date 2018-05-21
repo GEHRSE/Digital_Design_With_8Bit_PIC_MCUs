@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
-                                                                                               Wed Mar 28 00:44:44 2018
+                                                                                               Fri Apr 27 23:16:14 2018
 
 Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
      1                           	processor	18F45K20
@@ -188,7 +188,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    174                           	psect	bssCOMRAM
    175  000040                     __pbssCOMRAM:
    176                           	opt stack 0
-   177  000040                     _i:
+   177  000040                     _u8_i:
    178                           	opt stack 0
    179  000040                     	ds	1
    180                           tblptru	equ	0xFF8
@@ -296,7 +296,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    282 ;;
    283 ;; *************** function _main *****************
    284 ;; Defined at:
-   285 ;;		line 50 in file "main.c"
+   285 ;;		line 54 in file "main.c"
    286 ;; Parameters:    Size  Location     Type
    287 ;;		None
    288 ;; Auto vars:     Size  Location     Type
@@ -334,19 +334,19 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    320  007BBA                     _main:
    321                           	opt stack 29
    322                           
-   323                           ;main.c: 52: SetUp();
+   323                           ;main.c: 57: SetUp();
    324                           
    325                           ;incstack = 0
    326  007BBA  EC08  F03D         	call	_SetUp	;wreg free
    327                           
-   328                           ;main.c: 53: Lcd_Init();
+   328                           ;main.c: 58: Lcd_Init();
    329  007BBE  EC37  F03E         	call	_Lcd_Init	;wreg free
    330                           
-   331                           ;main.c: 55: Lcd_Cmd(12);
+   331                           ;main.c: 60: Lcd_Cmd(12);
    332  007BC2  0E0C               	movlw	12
    333  007BC4  ECCD  F03E         	call	_Lcd_Cmd
    334                           
-   335                           ;main.c: 56: Lcd_Out(1,0,Mensaje1);
+   335                           ;main.c: 61: Lcd_Out(1,0,Mensaje1);
    336  007BC8  0E00               	movlw	0
    337  007BCA  6E39               	movwf	Lcd_Out@x,c
    338  007BCC  0E11               	movlw	low _Mensaje1
@@ -356,25 +356,25 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    342  007BD4  0E01               	movlw	1
    343  007BD6  EC5F  F03D         	call	_Lcd_Out
    344                           
-   345                           ;main.c: 57: Lcd_Cmd(192);
+   345                           ;main.c: 62: Lcd_Cmd(192);
    346  007BDA  0EC0               	movlw	192
    347  007BDC  ECCD  F03E         	call	_Lcd_Cmd
    348                           
-   349                           ;main.c: 59: for(i = 0; i <= 3; i++)
+   349                           ;main.c: 65: for(u8_i = 0; u8_i <= 3; u8_i++)
    350  007BE0  0E00               	movlw	0
-   351  007BE2  6E40               	movwf	_i,c
+   351  007BE2  6E40               	movwf	_u8_i,c
    352  007BE4                     l1196:
    353  007BE4  0E03               	movlw	3
-   354  007BE6  6440               	cpfsgt	_i,c
+   354  007BE6  6440               	cpfsgt	_u8_i,c
    355  007BE8  D001               	goto	l100
    356  007BEA  D01F               	goto	u340
    357  007BEC                     l100:
    358                           
-   359                           ;main.c: 60: {
-   360                           ;main.c: 61: Clave[i] = GetKey();
+   359                           ;main.c: 66: {
+   360                           ;main.c: 67: Clave[u8_i] = GetKey();
    361  007BEC  EC90  F03D         	call	_GetKey	;wreg free
    362  007BF0  6E3E               	movwf	??_main& (0+255),c
-   363  007BF2  5040               	movf	_i,w,c
+   363  007BF2  5040               	movf	_u8_i,w,c
    364  007BF4  0D01               	mullw	1
    365  007BF6  0E32               	movlw	low _Clave
    366  007BF8  24F3               	addwf	prodl,w,c
@@ -384,7 +384,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    370  007C00  6EDA               	movwf	fsr2h,c
    371  007C02  C03E  FFDF         	movff	??_main,indf2
    372                           
-   373                           ;main.c: 62: _delay((unsigned long)((300)*(16000000/4000.0)));
+   373                           ;main.c: 68: _delay((unsigned long)((300)*(16000000/4000.0)));
    374  007C06  0E07               	movlw	7
    375  007C08  6E3F               	movwf	(??_main+1)& (0+255),c
    376  007C0A  0E17               	movlw	23
@@ -399,15 +399,15 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    385  007C1A  D7FA               	bra	u357
    386  007C1C  F000 F000          	nop2	
    387                           
-   388                           ;main.c: 63: Lcd_Chr_CP('*');
+   388                           ;main.c: 69: Lcd_Chr_CP('*');
    389  007C20  0E2A               	movlw	42
    390  007C22  EC64  F03F         	call	_Lcd_Chr_CP
-   391  007C26  2A40               	incf	_i,f,c
+   391  007C26  2A40               	incf	_u8_i,f,c
    392  007C28  D7DD               	goto	l1196
    393  007C2A                     u340:
    394                           
-   395                           ;main.c: 64: }
-   396                           ;main.c: 66: _delay((unsigned long)((800)*(16000000/4000.0)));
+   395                           ;main.c: 70: }
+   396                           ;main.c: 72: _delay((unsigned long)((800)*(16000000/4000.0)));
    397  007C2A  0E11               	movlw	17
    398  007C2C  6E3F               	movwf	(??_main+1)& (0+255),c
    399  007C2E  0E3C               	movlw	60
@@ -422,11 +422,11 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    408  007C3E  D7FA               	bra	u367
    409  007C40  F000               	nop	
    410                           
-   411                           ;main.c: 67: Lcd_Cmd(1);
+   411                           ;main.c: 73: Lcd_Cmd(1);
    412  007C42  0E01               	movlw	1
    413  007C44  ECCD  F03E         	call	_Lcd_Cmd
    414                           
-   415                           ;main.c: 68: Lcd_Out(1,0,Mensaje2);
+   415                           ;main.c: 74: Lcd_Out(1,0,Mensaje2);
    416  007C48  0E00               	movlw	0
    417  007C4A  6E39               	movwf	Lcd_Out@x,c
    418  007C4C  0E22               	movlw	low _Mensaje2
@@ -436,7 +436,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    422  007C54  0E01               	movlw	1
    423  007C56  EC5F  F03D         	call	_Lcd_Out
    424                           
-   425                           ;main.c: 69: Lcd_Out(2,0,Clave);
+   425                           ;main.c: 75: Lcd_Out(2,0,Clave);
    426  007C5A  0E00               	movlw	0
    427  007C5C  6E39               	movwf	Lcd_Out@x,c
    428  007C5E  0E32               	movlw	low _Clave
@@ -465,7 +465,7 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    451                           
    452 ;; *************** function _SetUp *****************
    453 ;; Defined at:
-   454 ;;		line 79 in file "main.c"
+   454 ;;		line 86 in file "main.c"
    455 ;; Parameters:    Size  Location     Type
    456 ;;		None
    457 ;; Auto vars:     Size  Location     Type
@@ -498,14 +498,14 @@ Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160
    484  007A10                     _SetUp:
    485                           	opt stack 30
    486                           
-   487                           ;main.c: 81: OSCCONbits.IRCF = 0b111;
+   487                           ;main.c: 91: OSCCONbits.IRCF = 0b111;
    488                           
    489                           ;incstack = 0
    490  007A10  88D3               	bsf	4051,4,c	;volatile
    491  007A12  8AD3               	bsf	4051,5,c	;volatile
    492  007A14  8CD3               	bsf	4051,6,c	;volatile
    493                           
-   494                           ;main.c: 82: return;
+   494                           ;main.c: 93: return;
    495  007A16  0012               	return		;funcret
    496  007A18                     __end_of_SetUp:
    497                           	opt stack 0
@@ -1941,32 +1941,32 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
-Symbol Table                                                                                   Wed Mar 28 00:44:44 2018
+Symbol Table                                                                                   Fri Apr 27 23:16:14 2018
 
-                      _i 0040                       l41 7B10                       l42 7AFE  
-                     l34 7ADC                       l35 7AC2                       l36 7AF6  
-                     l29 7CEC                       l37 7AC8                       l38 7ACE  
-                     l39 7AD4                       l80 7A6A                       l81 7A58  
-                     l73 7B86                       l82 7A84                       l83 7A5C  
-                     l84 7A60                       l68 7B40                       l85 7A64  
-           __CFG_CP0$OFF 000000             __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000  
-           __CFG_CP3$OFF 000000                      l100 7BEC                      l102 7C6C  
-           __CFG_CPB$OFF 000000                      u205 7DE6                      u310 7B8A  
-                    u215 7ED6                      u225 7EF0                      u235 7F14  
-                    u340 7C2A                      u407 7FDA                      u185 7DA8  
-                    u417 7FE6             __CFG_CPD$OFF 000000                      u195 7DC2  
-                    u507 7D20                      u427 7FF4                      u284 7B50  
-                    u285 7B4C                      u517 7D4C                      u437 7C8C  
-                    u357 7C10                      u527 7D66                      u447 7C9C  
-                    u367 7C34                      u537 7E1C                      u457 7CAC  
-                    u377 7F4A                      u547 7E26                      u467 7CBC  
-                    u387 7F54                      u557 7EA2                      u477 7CCC  
-                    u397 7FD0                      u567 7EAC                      u487 7CDC  
-                    u577 7EBC                      u497 7D06                      u587 7B60  
-          ??_KeyPadSetup 0036             __CFG_BORV$18 000000                      prod 000FF3  
-                    wreg 000FE8             __CFG_LVP$OFF 000000                     l1128 7B38  
-                   l1196 7BE4                     _LATB 000F8A             __CFG_PWRT$ON 000000  
-                   _Keys 0001                     _main 7BBA                     fsr2h 000FDA  
+                     l41 7B10                       l42 7AFE                       l34 7ADC  
+                     l35 7AC2                       l36 7AF6                       l29 7CEC  
+                     l37 7AC8                       l38 7ACE                       l39 7AD4  
+                     l80 7A6A                       l81 7A58                       l73 7B86  
+                     l82 7A84                       l83 7A5C                       l84 7A60  
+                     l68 7B40                       l85 7A64             __CFG_CP0$OFF 000000  
+           __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
+                    l100 7BEC                      l102 7C6C             __CFG_CPB$OFF 000000  
+                    u205 7DE6                      u310 7B8A                      u215 7ED6  
+                    u225 7EF0                      u235 7F14                      u340 7C2A  
+                    u407 7FDA                      u185 7DA8                      u417 7FE6  
+           __CFG_CPD$OFF 000000                      u195 7DC2                      u507 7D20  
+                    u427 7FF4                      u284 7B50                      u285 7B4C  
+                    u517 7D4C                      u437 7C8C                      u357 7C10  
+                    u527 7D66                      u447 7C9C                      u367 7C34  
+                    u537 7E1C                      u457 7CAC                      u377 7F4A  
+                    u547 7E26                      u467 7CBC                      u387 7F54  
+                    u557 7EA2                      u477 7CCC                      u397 7FD0  
+                    u567 7EAC                      u487 7CDC                      u577 7EBC  
+                    u497 7D06                      u587 7B60            ??_KeyPadSetup 0036  
+           __CFG_BORV$18 000000                      prod 000FF3                      wreg 000FE8  
+           __CFG_LVP$OFF 000000                     l1128 7B38                     l1196 7BE4  
+                   _LATB 000F8A             __CFG_PWRT$ON 000000                     _Keys 0001  
+                   _u8_i 0040                     _main 7BBA                     fsr2h 000FDA  
                    indf2 000FDF                     fsr1l 000FE1                     fsr2l 000FD9  
                    prodh 000FF4                     prodl 000FF3                     start 0000  
           __CFG_IESO$OFF 000000          __end_of_Lcd_Cmd 7EC8          __end_of_Lcd_Out 7B20  

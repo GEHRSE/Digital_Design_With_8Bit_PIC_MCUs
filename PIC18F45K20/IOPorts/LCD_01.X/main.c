@@ -1,10 +1,11 @@
 /*******************************************************************************
  * FileName:        main.c
- * ProjectName:     LCD_01 
+ * ProjectName:     LCD_01
+ * Course:			Diseño Digital con Microcontroladores PIC de 8 bits
+ * Topic:			I/O Ports
  * Dependencies:    See INCLUDES section below
  * Processor:       PIC18F45K20
- * Compiler:        XC8
- * Version:         1.45
+ * Compiler:		XC8, Ver. 1.45
  * Author:          Sebastián Fernando Puente Reyes
  * e-mail:          sebastian.puente@unillanos.edu.co
  * Date:            Marzo de 2018
@@ -16,13 +17,15 @@
  * 2. String de caracteres
  * 3. Dato (int) y (float) usando la función sprintf de la libreria stdio.h
  ******************************************************************************/
+
 /*******************************************************************************
  * Librerias
  ******************************************************************************/
-#include <xc.h>
-#include "ConfigurationBits.h"
-#include "lcd.h" //Libreria para el manejo de una LCD 16x2
+#include <xc.h> //Lib con información del MCU
+#include <stdint.h> //Lib estándar para enteros
 #include <stdio.h> //Libreria para sprintf
+#include "ConfigurationBits.h" //Bits de configuración
+#include "lcd.h" //Libreria LCD
 
 /*******************************************************************************
  * Prototipos de funciones
@@ -35,7 +38,7 @@ void SetUp(void);
 char TextoLCD[16];
 char Mensaje[] = "Digitales II";
 char Caracter = 'A';
-int a = 31;
+uint16_t u16_a = 31;
 float b = 3.1416;
 
 /*******************************************************************************
@@ -54,20 +57,25 @@ void main(void)
     Lcd_Chr_CP(Caracter); //Imprimir caracter en la posición actual del cursor
 
     //Uso de sprintf para imprimir variables númericas
-    sprintf(TextoLCD, "a=%d,b=%.3f",a,b);
+    sprintf(TextoLCD,"a=%d,b=%.3f",u16_a,b);
     Lcd_Out(2,0,TextoLCD); //Imprimir el resultado de sprintf en la línea 2
     
     while(1); //Bucle Infinito
 }
+
 /*******************************************************************************
- * FUNCTION:	SetUp()
- * INPUTS:      None
- * OUTPUTS:     None
- * DESCRIPTION: Configuración inicial (oscilador, puertos, etc.)
+ * FUNCIÓN:     SetUp()
+ * ENTRADAS:    Ninguna
+ * SALIDAS:     Ninguna
+ * DESCRIPCIÓN: Configuración inicial (oscilador, puertos, etc.)
  ******************************************************************************/
-void SetUp()
+void SetUp(void)
 {
-    OSCCONbits.IRCF = 0b111; //Oscilador interno a 16 MHz, Fosc = 16 MHz
+    //---A---Configuración Oscilador (Capitulo 2 DataSheet: Oscillator Module)
+
+    //--A.1--Configuración oscilador interno
+    OSCCONbits.IRCF = 0b111; //HFINTOSC = 16 MHz, Fosc = 16 MHz
+
     return;
 }
 

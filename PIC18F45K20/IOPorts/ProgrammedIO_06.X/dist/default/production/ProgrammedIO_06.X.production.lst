@@ -1,0 +1,480 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Sat May 12 16:54:30 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	18F45K20
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,noexec
+     9                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    11                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    12                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    13  0000                     
+    14                           ; Version 1.45
+    15                           ; Generated 16/11/2017 GMT
+    16                           ; 
+    17                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC18F45K20 Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     
+    49                           	psect	idataCOMRAM
+    50  007F8C                     __pidataCOMRAM:
+    51                           	opt stack 0
+    52                           
+    53                           ;initializer for _Disp7SegCC
+    54  007F8C  3F                 	db	63
+    55  007F8D  06                 	db	6
+    56  007F8E  5B                 	db	91
+    57  007F8F  4F                 	db	79
+    58  007F90  66                 	db	102
+    59  007F91  6D                 	db	109
+    60  007F92  7D                 	db	125
+    61  007F93  07                 	db	7
+    62  007F94  7F                 	db	127
+    63  007F95  6F                 	db	111
+    64  0000                     _TRISD	set	3989
+    65  0000                     _TRISB	set	3987
+    66  0000                     _ANSELHbits	set	3967
+    67  0000                     _LATD	set	3980
+    68  0000                     _LATB	set	3978
+    69  0000                     _OSCTUNEbits	set	3995
+    70  0000                     _OSCCONbits	set	4051
+    71  0000                     _PORTD	set	3971
+    72  0000                     _PORTB	set	3969
+    73                           
+    74                           ; #config settings
+    75  0000                     
+    76                           	psect	cinit
+    77  007FDA                     __pcinit:
+    78                           	opt stack 0
+    79  007FDA                     start_initialization:
+    80                           	opt stack 0
+    81  007FDA                     __initialization:
+    82                           	opt stack 0
+    83                           
+    84                           ; Initialize objects allocated to COMRAM (10 bytes)
+    85                           ; load TBLPTR registers with __pidataCOMRAM
+    86  007FDA  0E8C               	movlw	low __pidataCOMRAM
+    87  007FDC  6EF6               	movwf	tblptrl,c
+    88  007FDE  0E7F               	movlw	high __pidataCOMRAM
+    89  007FE0  6EF7               	movwf	tblptrh,c
+    90  007FE2  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+    91  007FE4  6EF8               	movwf	tblptru,c
+    92  007FE6  EE00  F001         	lfsr	0,__pdataCOMRAM
+    93  007FEA  EE10 F00A          	lfsr	1,10
+    94  007FEE                     copy_data0:
+    95  007FEE  0009               	tblrd		*+
+    96  007FF0  CFF5 FFEE          	movff	tablat,postinc0
+    97  007FF4  50E5               	movf	postdec1,w,c
+    98  007FF6  50E1               	movf	fsr1l,w,c
+    99  007FF8  E1FA               	bnz	copy_data0
+   100  007FFA                     end_of_initialization:
+   101                           	opt stack 0
+   102  007FFA                     __end_of__initialization:
+   103                           	opt stack 0
+   104  007FFA  0100               	movlb	0
+   105  007FFC  EFDB  F03F         	goto	_main	;jump to C main() function
+   106                           tblptru	equ	0xFF8
+   107                           tblptrh	equ	0xFF7
+   108                           tblptrl	equ	0xFF6
+   109                           tablat	equ	0xFF5
+   110                           postinc0	equ	0xFEE
+   111                           postdec1	equ	0xFE5
+   112                           fsr1l	equ	0xFE1
+   113                           
+   114                           	psect	dataCOMRAM
+   115  000001                     __pdataCOMRAM:
+   116                           	opt stack 0
+   117  000001                     _Disp7SegCC:
+   118                           	opt stack 0
+   119  000001                     	ds	10
+   120                           tblptru	equ	0xFF8
+   121                           tblptrh	equ	0xFF7
+   122                           tblptrl	equ	0xFF6
+   123                           tablat	equ	0xFF5
+   124                           postinc0	equ	0xFEE
+   125                           postdec1	equ	0xFE5
+   126                           fsr1l	equ	0xFE1
+   127                           
+   128                           	psect	cstackCOMRAM
+   129  000000                     __pcstackCOMRAM:
+   130                           	opt stack 0
+   131  000000                     tblptru	equ	0xFF8
+   132                           tblptrh	equ	0xFF7
+   133                           tblptrl	equ	0xFF6
+   134                           tablat	equ	0xFF5
+   135                           postinc0	equ	0xFEE
+   136                           postdec1	equ	0xFE5
+   137                           fsr1l	equ	0xFE1
+   138                           
+   139                           ; 1 bytes @ 0x0
+   140 ;;
+   141 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   142 ;;
+   143 ;; *************** function _main *****************
+   144 ;; Defined at:
+   145 ;;		line 48 in file "main.c"
+   146 ;; Parameters:    Size  Location     Type
+   147 ;;		None
+   148 ;; Auto vars:     Size  Location     Type
+   149 ;;		None
+   150 ;; Return value:  Size  Location     Type
+   151 ;;                  1    wreg      void 
+   152 ;; Registers used:
+   153 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   154 ;; Tracked objects:
+   155 ;;		On entry : 0/0
+   156 ;;		On exit  : 0/0
+   157 ;;		Unchanged: 0/0
+   158 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   159 ;;      Params:         0       0       0       0       0       0       0
+   160 ;;      Locals:         0       0       0       0       0       0       0
+   161 ;;      Temps:          0       0       0       0       0       0       0
+   162 ;;      Totals:         0       0       0       0       0       0       0
+   163 ;;Total ram usage:        0 bytes
+   164 ;; Hardware stack levels required when called:    1
+   165 ;; This function calls:
+   166 ;;		_SetUp
+   167 ;; This function is called by:
+   168 ;;		Startup code after reset
+   169 ;; This function uses a non-reentrant model
+   170 ;;
+   171                           
+   172                           	psect	text0
+   173  007FB6                     __ptext0:
+   174                           	opt stack 0
+   175  007FB6                     _main:
+   176                           	opt stack 30
+   177                           
+   178                           ;main.c: 51: SetUp();
+   179                           
+   180                           ;incstack = 0
+   181  007FB6  ECCB  F03F         	call	_SetUp	;wreg free
+   182  007FBA                     
+   183                           ;main.c: 55: {
+   184                           ;main.c: 57: if(PORTB < 10)
+   185  007FBA  0E0A               	movlw	10
+   186  007FBC  6081               	cpfslt	3969,c	;volatile
+   187  007FBE  D00A               	goto	l28
+   188                           
+   189                           ;main.c: 58: {
+   190                           ;main.c: 59: PORTD = Disp7SegCC[PORTB];
+   191  007FC0  5081               	movf	3969,w,c	;volatile
+   192  007FC2  0D01               	mullw	1
+   193  007FC4  0E01               	movlw	low _Disp7SegCC
+   194  007FC6  24F3               	addwf	prodl,w,c
+   195  007FC8  6ED9               	movwf	fsr2l,c
+   196  007FCA  0E00               	movlw	high _Disp7SegCC
+   197  007FCC  20F4               	addwfc	prodh,w,c
+   198  007FCE  6EDA               	movwf	fsr2h,c
+   199  007FD0  50DF               	movf	indf2,w,c
+   200  007FD2  D001               	goto	L1
+   201  007FD4                     l28:
+   202                           
+   203                           ;main.c: 61: else
+   204                           ;main.c: 62: {
+   205                           ;main.c: 63: PORTD = 0x00;
+   206  007FD4  0E00               	movlw	0
+   207  007FD6                     L1:
+   208  007FD6  6E83               	movwf	3971,c	;volatile
+   209  007FD8  D7F0               	goto	l27
+   210  007FDA                     __end_of_main:
+   211                           	opt stack 0
+   212                           tblptru	equ	0xFF8
+   213                           tblptrh	equ	0xFF7
+   214                           tblptrl	equ	0xFF6
+   215                           tablat	equ	0xFF5
+   216                           prodh	equ	0xFF4
+   217                           prodl	equ	0xFF3
+   218                           postinc0	equ	0xFEE
+   219                           postdec1	equ	0xFE5
+   220                           fsr1l	equ	0xFE1
+   221                           indf2	equ	0xFDF
+   222                           fsr2h	equ	0xFDA
+   223                           fsr2l	equ	0xFD9
+   224                           
+   225 ;; *************** function _SetUp *****************
+   226 ;; Defined at:
+   227 ;;		line 76 in file "main.c"
+   228 ;; Parameters:    Size  Location     Type
+   229 ;;		None
+   230 ;; Auto vars:     Size  Location     Type
+   231 ;;		None
+   232 ;; Return value:  Size  Location     Type
+   233 ;;                  1    wreg      void 
+   234 ;; Registers used:
+   235 ;;		wreg, status,2
+   236 ;; Tracked objects:
+   237 ;;		On entry : 0/0
+   238 ;;		On exit  : 0/0
+   239 ;;		Unchanged: 0/0
+   240 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   241 ;;      Params:         0       0       0       0       0       0       0
+   242 ;;      Locals:         0       0       0       0       0       0       0
+   243 ;;      Temps:          0       0       0       0       0       0       0
+   244 ;;      Totals:         0       0       0       0       0       0       0
+   245 ;;Total ram usage:        0 bytes
+   246 ;; Hardware stack levels used:    1
+   247 ;; This function calls:
+   248 ;;		Nothing
+   249 ;; This function is called by:
+   250 ;;		_main
+   251 ;; This function uses a non-reentrant model
+   252 ;;
+   253                           
+   254                           	psect	text1
+   255  007F96                     __ptext1:
+   256                           	opt stack 0
+   257  007F96                     _SetUp:
+   258                           	opt stack 30
+   259                           
+   260                           ;main.c: 81: OSCCONbits.IRCF = 0b111;
+   261                           
+   262                           ;incstack = 0
+   263  007F96  88D3               	bsf	4051,4,c	;volatile
+   264  007F98  8AD3               	bsf	4051,5,c	;volatile
+   265  007F9A  8CD3               	bsf	4051,6,c	;volatile
+   266                           
+   267                           ;main.c: 84: OSCTUNEbits.PLLEN = 1;
+   268  007F9C  8C9B               	bsf	3995,6,c	;volatile
+   269                           
+   270                           ;main.c: 89: LATB = 0;
+   271  007F9E  0E00               	movlw	0
+   272  007FA0  6E8A               	movwf	3978,c	;volatile
+   273                           
+   274                           ;main.c: 90: LATD = 0;
+   275  007FA2  0E00               	movlw	0
+   276  007FA4  6E8C               	movwf	3980,c	;volatile
+   277                           
+   278                           ;main.c: 97: ANSELHbits.ANS12 = 0;
+   279  007FA6  987F               	bcf	3967,4,c	;volatile
+   280                           
+   281                           ;main.c: 98: ANSELHbits.ANS10 = 0;
+   282  007FA8  947F               	bcf	3967,2,c	;volatile
+   283                           
+   284                           ;main.c: 99: ANSELHbits.ANS8 = 0;
+   285  007FAA  907F               	bcf	3967,0,c	;volatile
+   286                           
+   287                           ;main.c: 100: ANSELHbits.ANS9 = 0;
+   288  007FAC  927F               	bcf	3967,1,c	;volatile
+   289                           
+   290                           ;main.c: 103: TRISB = 0xFF;
+   291  007FAE  6893               	setf	3987,c	;volatile
+   292                           
+   293                           ;main.c: 104: TRISD = 0x00;
+   294  007FB0  0E00               	movlw	0
+   295  007FB2  6E95               	movwf	3989,c	;volatile
+   296  007FB4  0012               	return	
+   297  007FB6                     __end_of_SetUp:
+   298                           	opt stack 0
+   299  0000                     tblptru	equ	0xFF8
+   300                           tblptrh	equ	0xFF7
+   301                           tblptrl	equ	0xFF6
+   302                           tablat	equ	0xFF5
+   303                           prodh	equ	0xFF4
+   304                           prodl	equ	0xFF3
+   305                           postinc0	equ	0xFEE
+   306                           postdec1	equ	0xFE5
+   307                           fsr1l	equ	0xFE1
+   308                           indf2	equ	0xFDF
+   309                           fsr2h	equ	0xFDA
+   310                           fsr2l	equ	0xFD9
+   311                           tblptru	equ	0xFF8
+   312                           tblptrh	equ	0xFF7
+   313                           tblptrl	equ	0xFF6
+   314                           tablat	equ	0xFF5
+   315                           prodh	equ	0xFF4
+   316                           prodl	equ	0xFF3
+   317                           postinc0	equ	0xFEE
+   318                           postdec1	equ	0xFE5
+   319                           fsr1l	equ	0xFE1
+   320                           indf2	equ	0xFDF
+   321                           fsr2h	equ	0xFDA
+   322                           fsr2l	equ	0xFD9
+   323                           
+   324                           	psect	rparam
+   325  0000                     tblptru	equ	0xFF8
+   326                           tblptrh	equ	0xFF7
+   327                           tblptrl	equ	0xFF6
+   328                           tablat	equ	0xFF5
+   329                           prodh	equ	0xFF4
+   330                           prodl	equ	0xFF3
+   331                           postinc0	equ	0xFEE
+   332                           postdec1	equ	0xFE5
+   333                           fsr1l	equ	0xFE1
+   334                           indf2	equ	0xFDF
+   335                           fsr2h	equ	0xFDA
+   336                           fsr2l	equ	0xFD9
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        10
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      0      10
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+                              _SetUp
+ ---------------------------------------------------------------------------------
+ (1) _SetUp                                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _SetUp
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      17        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      16        0.0%
+BANK5              100      0       0      14        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F      0       A       1       10.5%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0       A      15        0.0%
+DATA                 0      0       A       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Sat May 12 16:54:30 2018
+
+                     l27 7FBA                       l28 7FD4             __CFG_CP0$OFF 000000  
+           __CFG_CP1$OFF 000000             __CFG_CP2$OFF 000000             __CFG_CP3$OFF 000000  
+           __CFG_CPB$OFF 000000             __CFG_CPD$OFF 000000             __CFG_BORV$18 000000  
+                    prod 000FF3             __CFG_LVP$OFF 000000                     _LATB 000F8A  
+                   _LATD 000F8C             __CFG_PWRT$ON 000000                     _main 7FB6  
+                   indf2 000FDF                     fsr1l 000FE1                     fsr2l 000FD9  
+                   prodl 000FF3                     start 0000            __CFG_IESO$OFF 000000  
+             _Disp7SegCC 0001            __CFG_MCLRE$ON 000000             ___param_bank 000000  
+                  ?_main 0000                    _PORTB 000F81                    _PORTD 000F83  
+                  _TRISB 000F93                    _TRISD 000F95            __CFG_WRT0$OFF 000000  
+          __CFG_WRT1$OFF 000000            __CFG_WRT2$OFF 000000            __CFG_WRT3$OFF 000000  
+         __CFG_EBTR0$OFF 000000           __CFG_FCMEN$OFF 000000           __CFG_EBTR1$OFF 000000  
+         __CFG_EBTR2$OFF 000000                    _SetUp 7F96           __CFG_EBTR3$OFF 000000  
+          __CFG_WRTB$OFF 000000            __CFG_WRTC$OFF 000000            __CFG_WRTD$OFF 000000  
+         __CFG_EBTRB$OFF 000000                    tablat 000FF5           __CFG_HFOFST$ON 000000  
+        __initialization 7FDA             __end_of_main 7FDA                   ??_main 0000  
+          __activetblptr 000000                   ?_SetUp 0000           __CFG_WDTEN$OFF 000000  
+         __CFG_XINST$OFF 000000           __CFG_STVREN$ON 000000             __pdataCOMRAM 0001  
+                 tblptrh 000FF7                   tblptrl 000FF6                   tblptru 000FF8  
+             __accesstop 0060  __end_of__initialization 7FFA          __CFG_PBADEN$OFF 000000  
+          ___rparam_used 000001           __pcstackCOMRAM 0000            __end_of_SetUp 7FB6  
+                ??_SetUp 0000                  __Hparam 0000                  __Lparam 0000  
+                __pcinit 7FDA                  __ramtop 0600                  __ptext0 7FB6  
+                __ptext1 7F96     end_of_initialization 7FFA                  postdec1 000FE5  
+                postinc0 000FEE            __pidataCOMRAM 7F8C      start_initialization 7FDA  
+       __CFG_LPT1OSC$OFF 000000        __CFG_CCP2MX$PORTC 000000           __size_of_SetUp 0020  
+       __CFG_WDTPS$32768 000000                copy_data0 7FEE                 __Hrparam 0000  
+               __Lrparam 0000       __CFG_BOREN$SBORDIS 000000               _ANSELHbits 000F7F  
+          __size_of_main 0024              _OSCTUNEbits 000F9B               _OSCCONbits 000FD3  
+      __CFG_FOSC$INTIO67 000000  

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
   -h+dist/default/production\LCD_01.X.production.sym \
   --cmf=dist/default/production\LCD_01.X.production.cmf -z -Q18F45K20 \
-  -oC:\Users\Lenovo\AppData\Local\Temp\s5mo.2 \
+  -oC:\Users\Lenovo\AppData\Local\Temp\sa3o.2 \
   -Mdist/default/production/LCD_01.X.production.map -E1 -ver=XC8 \
   -ASTACK=094h-05ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
   -ASMALLCONST=0600h-06FFhx122 -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Lenovo\AppData\Local\Temp\s5mo.obj \
+  C:\Users\Lenovo\AppData\Local\Temp\sa3o.obj \
   dist/default/production\LCD_01.X.production.obj 
 
 Object code version is 3.11
@@ -34,7 +34,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Lenovo\AppData\Local\Temp\s5mo.obj
+C:\Users\Lenovo\AppData\Local\Temp\sa3o.obj
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
@@ -611,7 +611,6 @@ __tdiv_to_l_@exp1        cstackCOMRAM 00000F
 __tdiv_to_l_@f1          cstackCOMRAM 000001
 __tdiv_to_l_@f2          cstackCOMRAM 000004
 __tdiv_to_l_@quot        cstackCOMRAM 00000A
-_a                       dataCOMRAM   000052
 _b                       dataCOMRAM   00004F
 _dpowers                 smallconst   000601
 _fround                  text4        0012B0
@@ -624,6 +623,7 @@ _scale                   text2        000EA8
 _scale$842               cstackCOMRAM 000027
 _sprintf                 text1        000684
 _sprintf$843             cstackBANK0  000060
+_u16_a                   dataCOMRAM   000052
 end_of_initialization    cinit        00230E
 fround@prec              cstackCOMRAM 00002D
 intlevel0                text         000000
@@ -652,7 +652,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 44 in file "main.c"
+		line 47 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1318,7 +1318,7 @@ Total ram usage:        9 bytes
 
  *************** function _SetUp *****************
  Defined at:
-		line 68 in file "main.c"
+		line 72 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
